@@ -39,10 +39,10 @@ var ENDPOINTS = {
 var megabus = require("megabus");
 var nodemailer = require("nodemailer");
 
-var finder = new megabus.TicketFinder('9/1/2017', '9/30/2017', [
+var finder = new megabus.TicketFinder('11/1/2017', '11/30/2017', [
   // New York <-> Philadelphia
-  new megabus.Route('New York', 'Philadelphia'),
-  new megabus.Route('Philadelphia', 'New York'),
+  new megabus.Route('Philadelphia', 'Pittsburgh'),
+  new megabus.Route('Pittsburgh', 'Philadelphia'),
 ]);
 
 
@@ -66,7 +66,7 @@ var mailOptions = {
 finder.getTicketsInPriceRange(0, 5)
   .then(function(tickets) {
       tickets.forEach((ticket, idx) => {
-        mailOptions.html += `[${idx + 1}] ${ticket}<br>`;
+        mailOptions.html += `<b>${idx + 1}</b> ${ticket}<br><br>`;
       });
       console.log(`*** ${tickets.length} tickets found ***`);
 
