@@ -1,0 +1,24 @@
+{
+  "name": "bus-finder",
+  "version": "1.0.0",
+  "description": "Tryna cop some Megabus deals",
+  "main": "index.js",
+  "dependencies": {
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/varughese/bus-finder.git"
+  },
+  "author": "Mathew Varughese",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/varughese/bus-finder/issues"
+  },
+  "homepage": "https://github.com/varughese/bus-finder#readme"
+}

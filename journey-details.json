@@ -1,0 +1,184 @@
+{
+  "dates": [{
+    "journeys": [{
+      "journeyId": "10703228",
+      "departureDateTime": "2017-10-13T09:15:00",
+      "arrivalDateTime": "2017-10-13T12:10:00",
+      "duration": "PT2H55M",
+      "price": 1.00,
+      "origin": {
+        "cityName": "Pittsburgh, PA",
+        "cityId": "128",
+        "stopName": "10th St and Penn Ave",
+        "stopId": "8bd4bfec5646f5bb28977b5b283a5850"
+      },
+      "destination": {
+        "cityName": "State College, PA",
+        "cityId": "137",
+        "stopName": "SW Corner of Walmart Parking Lot - 1665 N Atherton St.",
+        "stopId": "62d0109812a98a17705c3d95bca4906e"
+      },
+      "legs": [{
+        "carrier": "megabus",
+        "transportTypeId": 1,
+        "departureDateTime": "2017-10-13T09:15:00",
+        "arrivalDateTime": "2017-10-13T12:10:00",
+        "duration": "PT2H55M",
+        "origin": {
+          "cityName": "Pittsburgh, PA",
+          "cityId": "128",
+          "stopName": "10th St and Penn Ave",
+          "stopId": "8bd4bfec5646f5bb28977b5b283a5850"
+        },
+        "destination": {
+          "cityName": "State College, PA",
+          "cityId": "137",
+          "stopName": "SW Corner of Walmart Parking Lot - 1665 N Atherton St.",
+          "stopId": "62d0109812a98a17705c3d95bca4906e"
+        },
+        "carrierIcon": "carrier_megabus_sm.gif"
+      }],
+      "reservableType": "SEAT",
+      "serviceInformation": "NONE",
+      "promotionCodeStatus": "NONE",
+      "cheapestPrice": true,
+      "routeName": "M28",
+      "lowStockCount": null
+    }, {
+      "journeyId": "11920775",
+      "departureDateTime": "2017-10-13T12:00:00",
+      "arrivalDateTime": "2017-10-13T15:00:00",
+      "duration": "PT3H",
+      "price": 19.00,
+      "origin": {
+        "cityName": "Pittsburgh, PA",
+        "cityId": "128",
+        "stopName": "10th St and Penn Ave",
+        "stopId": "8bd4bfec5646f5bb28977b5b283a5850"
+      },
+      "destination": {
+        "cityName": "State College, PA",
+        "cityId": "137",
+        "stopName": "SW Corner of Walmart Parking Lot - 1665 N Atherton St.",
+        "stopId": "62d0109812a98a17705c3d95bca4906e"
+      },
+      "legs": [{
+        "carrier": "megabus",
+        "transportTypeId": 1,
+        "departureDateTime": "2017-10-13T12:00:00",
+        "arrivalDateTime": "2017-10-13T15:00:00",
+        "duration": "PT3H",
+        "origin": {
+          "cityName": "Pittsburgh, PA",
+          "cityId": "128",
+          "stopName": "10th St and Penn Ave",
+          "stopId": "8bd4bfec5646f5bb28977b5b283a5850"
+        },
+        "destination": {
+          "cityName": "State College, PA",
+          "cityId": "137",
+          "stopName": "SW Corner of Walmart Parking Lot - 1665 N Atherton St.",
+          "stopId": "62d0109812a98a17705c3d95bca4906e"
+        },
+        "carrierIcon": "carrier_megabus_sm.gif"
+      }],
+      "reservableType": "SEAT",
+      "serviceInformation": "NONE",
+      "promotionCodeStatus": "NONE",
+      "cheapestPrice": false,
+      "routeName": "M28",
+      "lowStockCount": null
+    }, {
+      "journeyId": "11921132",
+      "departureDateTime": "2017-10-13T15:15:00",
+      "arrivalDateTime": "2017-10-13T18:15:00",
+      "duration": "PT3H",
+      "price": 1.00,
+      "origin": {
+        "cityName": "Pittsburgh, PA",
+        "cityId": "128",
+        "stopName": "10th St and Penn Ave",
+        "stopId": "8bd4bfec5646f5bb28977b5b283a5850"
+      },
+      "destination": {
+        "cityName": "State College, PA",
+        "cityId": "137",
+        "stopName": "SW Corner of Walmart Parking Lot - 1665 N Atherton St.",
+        "stopId": "62d0109812a98a17705c3d95bca4906e"
+      },
+      "legs": [{
+        "carrier": "megabus",
+        "transportTypeId": 1,
+        "departureDateTime": "2017-10-13T15:15:00",
+        "arrivalDateTime": "2017-10-13T18:15:00",
+        "duration": "PT3H",
+        "origin": {
+          "cityName": "Pittsburgh, PA",
+          "cityId": "128",
+          "stopName": "10th St and Penn Ave",
+          "stopId": "8bd4bfec5646f5bb28977b5b283a5850"
+        },
+        "destination": {
+          "cityName": "State College, PA",
+          "cityId": "137",
+          "stopName": "SW Corner of Walmart Parking Lot - 1665 N Atherton St.",
+          "stopId": "62d0109812a98a17705c3d95bca4906e"
+        },
+        "carrierIcon": "carrier_megabus_sm.gif"
+      }],
+      "reservableType": "SEAT",
+      "serviceInformation": "NONE",
+      "promotionCodeStatus": "NONE",
+      "cheapestPrice": true,
+      "routeName": "M28",
+      "lowStockCount": null
+    }, {
+      "journeyId": "10703377",
+      "departureDateTime": "2017-10-13T23:00:00",
+      "arrivalDateTime": "2017-10-14T01:40:00",
+      "duration": "PT2H40M",
+      "price": 19.00,
+      "origin": {
+        "cityName": "Pittsburgh, PA",
+        "cityId": "128",
+        "stopName": "10th St and Penn Ave",
+        "stopId": "8bd4bfec5646f5bb28977b5b283a5850"
+      },
+      "destination": {
+        "cityName": "State College, PA",
+        "cityId": "137",
+        "stopName": "SW Corner of Walmart Parking Lot - 1665 N Atherton St.",
+        "stopId": "62d0109812a98a17705c3d95bca4906e"
+      },
+      "legs": [{
+        "carrier": "megabus",
+        "transportTypeId": 1,
+        "departureDateTime": "2017-10-13T23:00:00",
+        "arrivalDateTime": "2017-10-14T01:40:00",
+        "duration": "PT2H40M",
+        "origin": {
+          "cityName": "Pittsburgh, PA",
+          "cityId": "128",
+          "stopName": "10th St and Penn Ave",
+          "stopId": "8bd4bfec5646f5bb28977b5b283a5850"
+        },
+        "destination": {
+          "cityName": "State College, PA",
+          "cityId": "137",
+          "stopName": "SW Corner of Walmart Parking Lot - 1665 N Atherton St.",
+          "stopId": "62d0109812a98a17705c3d95bca4906e"
+        },
+        "carrierIcon": "carrier_megabus_sm.gif"
+      }],
+      "reservableType": "SEAT",
+      "serviceInformation": "NONE",
+      "promotionCodeStatus": "NONE",
+      "cheapestPrice": false,
+      "routeName": "M28",
+      "lowStockCount": null
+    }],
+    "price": 1.00,
+    "date": "2017-10-13",
+    "available": true
+  }]
+}
