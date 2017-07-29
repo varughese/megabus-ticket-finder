@@ -36,6 +36,15 @@ var ENDPOINTS = {
 //   .pipe(fs.createWriteStream('journey-details.json'));
 
 
+var TicketFinder = require("./lib/ticketfinder");
+var Route = require("./lib/route");
+
+var finder = new TicketFinder("9/1/2017", "9/30/2017", new Route("Pittsburgh", "Philadelphia"));
+
+finder.getTicketsInPriceRange(0,0);
+
+/*
+
 var megabus = require("megabus");
 var nodemailer = require("nodemailer");
 
@@ -79,3 +88,5 @@ finder.getTicketsInPriceRange(0, 5)
 		});
 
 	});
+
+	*/
