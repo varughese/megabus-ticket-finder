@@ -1,0 +1,366 @@
+{
+  "ALBANY": {
+    "id": 89,
+    "name": "Albany, NY"
+  },
+  "ANAHEIM": {
+    "id": 466,
+    "name": "Anaheim, CA"
+  },
+  "ANN ARBOR": {
+    "id": 91,
+    "name": "Ann Arbor, MI"
+  },
+  "ATHENS": {
+    "id": 302,
+    "name": "Athens, GA"
+  },
+  "ATLANTA": {
+    "id": 289,
+    "name": "Atlanta, GA"
+  },
+  "AUSTIN": {
+    "id": 320,
+    "name": "Austin, TX"
+  },
+  "BALTIMORE": {
+    "id": 143,
+    "name": "Baltimore, MD"
+  },
+  "BATON ROUGE": {
+    "id": 319,
+    "name": "Baton Rouge, LA"
+  },
+  "BINGHAMTON": {
+    "id": 93,
+    "name": "Binghamton, NY"
+  },
+  "BIRMINGHAM": {
+    "id": 292,
+    "name": "Birmingham, AL"
+  },
+  "BOSTON": {
+    "id": 94,
+    "name": "Boston, MA"
+  },
+  "BUFFALO AIRPORT": {
+    "id": 273,
+    "name": "Buffalo Airport, NY"
+  },
+  "BUFFALO": {
+    "id": 95,
+    "name": "Buffalo, NY"
+  },
+  "BURBANK": {
+    "id": 420,
+    "name": "Burbank, CA"
+  },
+  "BURLINGTON": {
+    "id": 96,
+    "name": "Burlington, VT"
+  },
+  "CHARLOTTE": {
+    "id": 99,
+    "name": "Charlotte, NC"
+  },
+  "CHATTANOOGA": {
+    "id": 290,
+    "name": "Chattanooga, TN"
+  },
+  "CHICAGO": {
+    "id": 100,
+    "name": "Chicago, IL"
+  },
+  "CHRISTIANSBURG": {
+    "id": 101,
+    "name": "Christiansburg, VA"
+  },
+  "CINCINNATI": {
+    "id": 102,
+    "name": "Cincinnati, OH"
+  },
+  "CLEVELAND": {
+    "id": 103,
+    "name": "Cleveland, OH"
+  },
+  "COLUMBIA": {
+    "id": 454,
+    "name": "Columbia, SC"
+  },
+  "DALLAS/FORT WORTH": {
+    "id": 317,
+    "name": "Dallas/Fort Worth, TX"
+  },
+  "DARTMOUTH UMASS": {
+    "id": 465,
+    "name": "Dartmouth UMass, MA"
+  },
+  "DES MOINES": {
+    "id": 106,
+    "name": "Des Moines, IA"
+  },
+  "DETROIT": {
+    "id": 107,
+    "name": "Detroit, MI"
+  },
+  "DURHAM": {
+    "id": 131,
+    "name": "Durham, NC"
+  },
+  "FAIRHAVEN/NEW BEDFORD": {
+    "id": 316,
+    "name": "Fairhaven/New Bedford, MA"
+  },
+  "FALL RIVER": {
+    "id": 469,
+    "name": "Fall River, MA"
+  },
+  "FAYETTEVILLE": {
+    "id": 455,
+    "name": "Fayetteville, NC"
+  },
+  "FORT LAUDERDALE": {
+    "id": 462,
+    "name": "Fort Lauderdale, FL"
+  },
+  "GAINESVILLE": {
+    "id": 296,
+    "name": "Gainesville, FL"
+  },
+  "HAMPTON": {
+    "id": 110,
+    "name": "Hampton, VA"
+  },
+  "HARRISBURG": {
+    "id": 111,
+    "name": "Harrisburg, PA"
+  },
+  "HARTFORD": {
+    "id": 112,
+    "name": "Hartford, CT"
+  },
+  "HOUSTON": {
+    "id": 318,
+    "name": "Houston, TX"
+  },
+  "INDIANAPOLIS": {
+    "id": 115,
+    "name": "Indianapolis, IN"
+  },
+  "IOWA CITY (CORALVILLE)": {
+    "id": 116,
+    "name": "Iowa City (Coralville), IA"
+  },
+  "JACKSONVILLE": {
+    "id": 295,
+    "name": "Jacksonville, FL"
+  },
+  "KNOXVILLE": {
+    "id": 118,
+    "name": "Knoxville, TN"
+  },
+  "LAS VEGAS": {
+    "id": 417,
+    "name": "Las Vegas, NV"
+  },
+  "LINCOLN": {
+    "id": 472,
+    "name": "Lincoln, NE"
+  },
+  "LITTLE ROCK": {
+    "id": 324,
+    "name": "Little Rock, AR"
+  },
+  "LOS ANGELES": {
+    "id": 390,
+    "name": "Los Angeles, CA"
+  },
+  "LOUISVILLE": {
+    "id": 298,
+    "name": "Louisville, KY"
+  },
+  "MADISON": {
+    "id": 119,
+    "name": "Madison, WI"
+  },
+  "MEMPHIS": {
+    "id": 120,
+    "name": "Memphis, TN"
+  },
+  "MIAMI": {
+    "id": 450,
+    "name": "Miami, FL"
+  },
+  "MILWAUKEE": {
+    "id": 121,
+    "name": "Milwaukee, WI"
+  },
+  "MINNEAPOLIS": {
+    "id": 144,
+    "name": "Minneapolis, MN"
+  },
+  "MOBILE": {
+    "id": 294,
+    "name": "Mobile, AL"
+  },
+  "MOLINE": {
+    "id": 473,
+    "name": "Moline, IL"
+  },
+  "MONTGOMERY": {
+    "id": 293,
+    "name": "Montgomery, AL"
+  },
+  "MONTPELIER": {
+    "id": 463,
+    "name": "Montpelier, VT"
+  },
+  "MORGANTOWN": {
+    "id": 299,
+    "name": "Morgantown, WV"
+  },
+  "NASHVILLE": {
+    "id": 291,
+    "name": "Nashville, TN"
+  },
+  "NEW BRUNSWICK": {
+    "id": 305,
+    "name": "New Brunswick, NJ"
+  },
+  "NEW HAVEN": {
+    "id": 122,
+    "name": "New Haven, CT"
+  },
+  "NEW ORLEANS": {
+    "id": 303,
+    "name": "New Orleans, LA"
+  },
+  "NEW YORK": {
+    "id": 123,
+    "name": "New York, NY"
+  },
+  "NEWARK": {
+    "id": 389,
+    "name": "Newark, DE"
+  },
+  "OAKLAND": {
+    "id": 413,
+    "name": "Oakland, CA"
+  },
+  "OMAHA": {
+    "id": 126,
+    "name": "Omaha, NE"
+  },
+  "ORLANDO": {
+    "id": 297,
+    "name": "Orlando, FL"
+  },
+  "PHILADELPHIA": {
+    "id": 127,
+    "name": "Philadelphia, PA"
+  },
+  "PITTSBURGH": {
+    "id": 128,
+    "name": "Pittsburgh, PA"
+  },
+  "PORTLAND": {
+    "id": 129,
+    "name": "Portland, ME"
+  },
+  "PRINCETON": {
+    "id": 304,
+    "name": "Princeton, NJ"
+  },
+  "PROVIDENCE": {
+    "id": 130,
+    "name": "Providence, RI"
+  },
+  "RENO": {
+    "id": 418,
+    "name": "Reno, NV"
+  },
+  "RICHMOND": {
+    "id": 132,
+    "name": "Richmond, VA"
+  },
+  "RIDGEWOOD": {
+    "id": 133,
+    "name": "Ridgewood, NJ"
+  },
+  "RIVERSIDE": {
+    "id": 416,
+    "name": "Riverside, CA"
+  },
+  "ROCHESTER": {
+    "id": 134,
+    "name": "Rochester, NY"
+  },
+  "SACRAMENTO": {
+    "id": 415,
+    "name": "Sacramento, CA"
+  },
+  "SAN ANTONIO": {
+    "id": 321,
+    "name": "San Antonio, TX"
+  },
+  "SAN FRANCISCO": {
+    "id": 414,
+    "name": "San Francisco, CA"
+  },
+  "SAN JOSE": {
+    "id": 412,
+    "name": "San Jose, CA"
+  },
+  "SECAUCUS": {
+    "id": 135,
+    "name": "Secaucus, NJ"
+  },
+  "SPARKS": {
+    "id": 419,
+    "name": "Sparks, NV"
+  },
+  "ST LOUIS": {
+    "id": 136,
+    "name": "St Louis, MO"
+  },
+  "ST. PAUL": {
+    "id": 430,
+    "name": "St. Paul, MN"
+  },
+  "STATE COLLEGE": {
+    "id": 137,
+    "name": "State College, PA"
+  },
+  "SYRACUSE": {
+    "id": 139,
+    "name": "Syracuse, NY"
+  },
+  "TALLAHASSEE": {
+    "id": 453,
+    "name": "Tallahassee, FL"
+  },
+  "TAMPA": {
+    "id": 451,
+    "name": "Tampa, FL"
+  },
+  "TAMPA\\MANGO (P&R)": {
+    "id": 470,
+    "name": "Tampa\\Mango (P&R), FL"
+  },
+  "TOLEDO": {
+    "id": 140,
+    "name": "Toledo, OH"
+  },
+  "TORONTO": {
+    "id": 145,
+    "name": "Toronto, ON"
+  },
+  "VIRGINIA BEACH": {
+    "id": 475,
+    "name": "Virginia Beach, VA"
+  },
+  "WASHINGTON": {
+    "id": 142,
+    "name": "Washington, DC"
+  }
+}
