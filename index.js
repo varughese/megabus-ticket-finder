@@ -3,7 +3,7 @@
 var TicketFinder = require("./lib/ticketfinder");
 var Route = require("./lib/route");
 
-var finder = new TicketFinder("9/15/2017", "10/1/2017", new Route("Pittsburgh", "Philadelphia").swap());
+var finder = new TicketFinder({ start: "9/15/2017", end: "10/1/2017" }, new Route("Pittsburgh", "Philadelphia").swap());
 
 finder.getTicketsInPriceRange(0,10)
 	.then(function(tickets) {
