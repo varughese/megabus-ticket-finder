@@ -27,7 +27,9 @@ app.get('/', function(req, res) {
 
 	finder.getTicketsInPriceRange(0,5)
 		.then(function(tickets) {
-			res.send(JSON.stringify(tickets));
+			res.setHeader('content-type', 'text/plain');
+			var lines = tickets.map(n => n+"").join("\n\n\n");
+			res.send(lines);
 		});
 
 });
