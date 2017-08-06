@@ -4,7 +4,11 @@
   "description": "Tryna cop some Megabus deals",
   "main": "index.js",
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
     "moment": "^2.18.1",
+    "mongoose": "^4.11.5",
+    "morgan": "^1.8.2",
     "nodemailer": "^4.0.1",
     "request": "^2.81.0",
     "request-promise": "^4.2.1"
