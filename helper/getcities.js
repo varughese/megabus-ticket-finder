@@ -19,7 +19,7 @@ request("https://us.megabus.com/journey-planner/api/origin-cities")
 			};
 		});
 
-		fs.writeFile('lib/locations.json', JSON.stringify(locationHash), function(err) {
+		fs.writeFile('lib/locations/idmap.json', JSON.stringify(locationHash), function(err) {
 		  if (err) throw err;
 		  console.log('The file has been saved!');
 		});

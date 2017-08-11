@@ -3,32 +3,14 @@
 var TicketFinder = require("./lib/ticketfinder");
 var Route = require("./lib/route");
 
-var finder = new TicketFinder({ start: "TODAY", latestAvailable: true, weekends: true }, new Route("Pittsburgh", "Philadelphia"));
+var finder = new TicketFinder({ start: "TODAY", latestAvailable: true, weekends: false },
+	[new Route("Pittsburgh", "Philadelphia"),
+	 new Route("Philadelphia", "Pittsburgh")]);
 
 finder.getTicketsInPriceRange(0,5)
 	.then(function(tickets) {
-		var email = tickets.map(n => n+"").join("<br><br>");
-		var nodemailer = require("nodemailer");
-		var transporter = nodemailer.createTransport({
-			service: 'Gmail',
-			auth: {
-				user: 'megabus.ticket.finder@gmail.com',
-				pass: 'megabusticket'
-			}
-		});
-
-		var mailOptions = {
-			from: '"MEGA BUS FINDER" <megabustickerfinder@gmail.com>', // sender address
-			to: 'matvarughese3@gmail.com', // list of receivers
-			subject: 'Cheapest Ticket PHL to PITT', // Subject line
-			html: email // html body
-		};
-
-		transporter.sendMail(mailOptions, function(error, info) {
-			if (error) {
-				return console.log(error);
-			}
-			console.log('Message %s sent: %s', info.messageId, info.response);
+		tickets.map(function(n) {
+			console.log(n+"");
 		});
 	});
 
