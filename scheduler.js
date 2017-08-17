@@ -1,19 +1,20 @@
 var TicketFinder = require("./lib/ticketfinder");
 var Route = require("./lib/route");
 
-var finder = new TicketFinder({ start: "10/01/17", latestAvailable: true, weekends: true },
+var finder = new TicketFinder({ start: "2017-10-01", latestAvailable: true, weekends: true },
 	[new Route("Pittsburgh", "Philadelphia"),
 	 new Route("Philadelphia", "Pittsburgh")]);
 
 
 function _getTickets() {
-	console.log("GETTING EMAILS, TRY", counter++);
+	console.log("GETTING EMAILS, TRY", __intervalInfo.latest.i );
 	finder.getTicketsInPriceRange(0,5)
-		.then(function(tickets) {
-			var list = tickets.map(function(n) {
+		.then(function(payload) {
+			var list = payload.tickets.map(function(n) {
+				console.log(n.toHtml());
 				return n.toHtml();
 			}).join("<br><br>");
-			if(counter % 12 === 0)
+			if(__intervalInfo.latest.i % 12 === 0)
 				_sendMail(list);
 		});
 }
@@ -27,9 +28,10 @@ function _sendMail(email) {
 			pass: 'megabusticket'
 		}
 	});
-	var latestIntervalInfo = _intervalInfo[_intervalInfo.length-1];
+	console.log(__intervalInfo);
+	var latestIntervalInfo = __intervalInfo.latest;
 
-	email += "<br><br><p>Date: " + latestIntervalInfo.t + " Counter:" + latestIntervalInfo.i + "</p>";
+	email += "<br><br><span>Date: " + latestIntervalInfo.t + "</span>&nbsp;<span>Counter:" + latestIntervalInfo.i + "</span>";
 	var mailOptions = {
 		from: '"MEGA BUS FINDER" <megabustickerfinder@gmail.com>', // sender address
 		to: 'matvarughese3@gmail.com', // list of receivers
@@ -45,11 +47,17 @@ function _sendMail(email) {
 	});
 }
 
-_getTickets();
-
-var counter = 0;
-var _intervalInfo = [];
-setInterval(function() {
-	_intervalInfo.push({t: new Date(), i: counter++});
+function __task() {
+	var log = {t: new Date(), i: __intervalInfo.counter++};
+	__intervalInfo.latest = log;
+	__intervalInfo.log.push(log);
+	__intervalInfo.counter++;
 	_getTickets();
-}, 3 * 60 * 60 * 1000);
+}
+
+var __intervalInfo = {
+	counter: 0,
+	log: []
+};
+__task();
+setInterval(__task, 3 * 60 * 60 * 1000);
