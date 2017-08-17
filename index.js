@@ -3,6 +3,7 @@
 var mongo = require("mongodb").MongoClient,
 	url = 'mongodb://localhost:27017/megabustest';
 // Use connect method to connect to the Server
+var colors = require("colors/safe");
 
 
 var TicketFinder = require("./lib/ticketfinder");
@@ -11,17 +12,20 @@ var Route = require("./lib/route");
 var finder = new TicketFinder({
 	start: "TODAY",
 	latestAvailable: true,
-	weekends: false
+	weekends: true
 }, [new Route("Pittsburgh", "Philadelphia"),
 	new Route("Philadelphia", "Pittsburgh")
 ]);
 
 finder.getTicketsInPriceRange(0, 5)
-	.then(function(tickets) {
-		tickets.forEach(function(ticket) {
-			console.log(ticket + "");
-			_saveTicket(ticket);
+	.then(function(payload) {
+		payload.tickets.forEach(function(ticket) {
+			var color = ticket.origin.cityId == 128 ? "blue" : "yellow",
+				coloredLogMsg = colors[color](ticket+"");
+
+			console.log(coloredLogMsg);
 		});
+		// _saveTicket(tickets);
 	});
 
 
@@ -29,24 +33,18 @@ function _saveTicket(ticket) {
 	MongoClient.connect(url, function(err, db) {
 		console.log(":::DB CONNECT:::");
 
-		// Insert a single document
-		db.collection('tickets').insertOne({
-			a: 1
-		}, function(err, r) {
-			assert.equal(null, err);
-			assert.equal(1, r.insertedCount);
-		});
+		var transaction = {
+			date: new Date(),
+			newDates: [],
+			newTimes: [],
+			newPrice: []
+		};
 
-		db.collection('inserts').insertMany([{
-			a: 2
-		}, {
-			a: 3
-		}], function(err, r) {
-			assert.equal(null, err);
-			assert.equal(2, r.insertedCount);
 
-			db.close();
-		});
+		db.collection('tickets')
+			.insertMany(ticket.map(t => t.toJson()), function(err, r) {
+				db.close();
+			});
 	});
 }
 
