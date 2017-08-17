@@ -3,7 +3,7 @@
 var mongo = require("mongodb").MongoClient,
 	url = 'mongodb://localhost:27017/megabustest';
 // Use connect method to connect to the Server
-var colors = require("colors/safe");
+var colorsLogMethods = require("colors/safe");
 
 
 var TicketFinder = require("./lib/ticketfinder");
@@ -21,15 +21,16 @@ finder.getTicketsInPriceRange(0, 5)
 	.then(function(payload) {
 		payload.tickets.forEach(function(ticket) {
 			var color = ticket.origin.cityId == 128 ? "blue" : "yellow",
-				coloredLogMsg = colors[color](ticket+"");
+				coloredLogMsg = colorsLogMethods[color](ticket+"");
 
 			console.log(coloredLogMsg);
 		});
+		console.log('\n');
 		// _saveTicket(tickets);
 	});
 
 
-function _saveTicket(ticket) {
+function _saveTicket(tickets) {
 	MongoClient.connect(url, function(err, db) {
 		console.log(":::DB CONNECT:::");
 
@@ -40,9 +41,22 @@ function _saveTicket(ticket) {
 			newPrice: []
 		};
 
+		var db_tickets = db.collection('tickets');
+		var _journeyIds = tickets.map(t => t.journeyId);
 
-		db.collection('tickets')
-			.insertMany(ticket.map(t => t.toJson()), function(err, r) {
+		db_tickets
+			.find({journeyId: {$in: _journeyIds}})
+			.toArray(function(oldDates) {
+				var newJourneys = tickets.filter(function(t) {
+					return oldDates.indexOf(t.journeyId) === -1;
+				});
+				//too fried to finish this tonight.
+			});
+
+
+
+		ticketCollection
+			.insertMany(tickets.map(t => t.toJson()), function(err, r) {
 				db.close();
 			});
 	});
