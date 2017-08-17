@@ -6,16 +6,15 @@ var finder = new TicketFinder({ start: "10/01/17", latestAvailable: true, weeken
 	 new Route("Philadelphia", "Pittsburgh")]);
 
 
-var counter = 1;
-
 function _getTickets() {
 	console.log("GETTING EMAILS, TRY", counter++);
 	finder.getTicketsInPriceRange(0,5)
 		.then(function(tickets) {
 			var list = tickets.map(function(n) {
-				return n+"";
+				return n.toHtml();
 			}).join("<br><br>");
-			_sendMail(list);
+			if(counter % 12 === 0)
+				_sendMail(list);
 		});
 }
 
@@ -28,7 +27,9 @@ function _sendMail(email) {
 			pass: 'megabusticket'
 		}
 	});
+	var latestIntervalInfo = _intervalInfo[_intervalInfo.length-1];
 
+	email += "<br><br><p>Date: " + latestIntervalInfo.t + " Counter:" + latestIntervalInfo.i + "</p>";
 	var mailOptions = {
 		from: '"MEGA BUS FINDER" <megabustickerfinder@gmail.com>', // sender address
 		to: 'matvarughese3@gmail.com', // list of receivers
@@ -46,4 +47,9 @@ function _sendMail(email) {
 
 _getTickets();
 
-setInterval(_getTickets, 12 * 60 * 60 * 1000);
+var counter = 0;
+var _intervalInfo = [];
+setInterval(function() {
+	_intervalInfo.push({t: new Date(), i: counter++});
+	_getTickets();
+}, 3 * 60 * 60 * 1000);
