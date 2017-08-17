@@ -1,0 +1,25 @@
+.ticket-section {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 2px 5px;
+  font-family: Courier;
+  font-size: 14px;
+
+}
+.ticket {
+  margin-bottom: 2px;
+  border: 1px solid #ddd;
+  padding: 5px;
+  color: white;
+  background: #333;
+}
+
+.travel-line-date, .travel-line-route {
+text-decoration: underline;
+  color: white;
+  margin-right: 14px;
+}
+
+.travel-line-price {
+  color: #76ff76;
+}

@@ -1,7 +1,7 @@
 var TicketFinder = require("./lib/ticketfinder");
 var Route = require("./lib/route");
 
-var finder = new TicketFinder({ start: "2017-10-01", latestAvailable: true, weekends: true },
+var finder = new TicketFinder({ start: "2017-11-01", latestAvailable: true, weekends: false },
 	[new Route("Pittsburgh", "Philadelphia"),
 	 new Route("Philadelphia", "Pittsburgh")]);
 
@@ -31,9 +31,9 @@ function _sendMail(email) {
 	console.log(__intervalInfo);
 	var latestIntervalInfo = __intervalInfo.latest;
 
-	email += "<br><br><span>Date: " + latestIntervalInfo.t + "</span>&nbsp;<span>Counter:" + latestIntervalInfo.i + "</span>";
+	email += "<div><span>Date: " + latestIntervalInfo.t + "</span>&nbsp;<span>Email #:" + (latestIntervalInfo.i+1) + "</span></div>";
 	var mailOptions = {
-		from: '"MEGA BUS FINDER" <megabustickerfinder@gmail.com>', // sender address
+		from: '🚌', // sender address
 		to: 'matvarughese3@gmail.com', // list of receivers
 		subject: 'Cheapest Ticket PHL to PITT', // Subject line
 		html: email // html body
@@ -48,13 +48,14 @@ function _sendMail(email) {
 }
 
 function __task() {
-	var log = {t: new Date(), i: __intervalInfo.counter++};
+	var log = {t: moment().format("h:mm:ss"), i: __intervalInfo.counter++};
 	__intervalInfo.latest = log;
 	__intervalInfo.log.push(log);
 	__intervalInfo.counter++;
 	_getTickets();
 }
 
+var moment = require("moment");
 var __intervalInfo = {
 	counter: 0,
 	log: []
