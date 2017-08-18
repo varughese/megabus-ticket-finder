@@ -13,7 +13,7 @@ function _getTickets() {
 			var list = payload.tickets.map(function(n) {
 				console.log(n.toHtml());
 				return n.toHtml();
-			}).join("<br><br>");
+			}).join("");
 			if(__intervalInfo.latest.i % 12 === 0)
 				_sendMail(list);
 		});
