@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-var mongo = require("mongodb").MongoClient,
+var MongoClient = require("mongodb").MongoClient,
 	url = 'mongodb://localhost:27017/megabustest';
 // Use connect method to connect to the Server
 var colorsLogMethods = require("colors/safe");
@@ -26,11 +26,12 @@ finder.getTicketsInPriceRange(0, 5)
 			console.log(coloredLogMsg);
 		});
 		console.log('\n');
-		// _saveTicket(tickets);
+		// _saveTickets(payload);
 	});
 
 
-function _saveTicket(tickets) {
+function _saveTickets(payload) {
+
 	MongoClient.connect(url, function(err, db) {
 		console.log(":::DB CONNECT:::");
 
@@ -42,23 +43,27 @@ function _saveTicket(tickets) {
 		};
 
 		var db_tickets = db.collection('tickets');
+		var tickets = payload.tickets;
 		var _journeyIds = tickets.map(t => t.journeyId);
 
 		db_tickets
 			.find({journeyId: {$in: _journeyIds}})
-			.toArray(function(oldDates) {
-				var newJourneys = tickets.filter(function(t) {
+			.toArray(function(err, oldDates) {
+			var newJourneys = oldDates ? tickets.filter(function(t) {
 					return oldDates.indexOf(t.journeyId) === -1;
-				});
+				}) : tickets;
+			db_tickets.insertMany(tickets.map(t => t.toJson()), function(resp) {
+				console.log("NEW JAWNS");
+			});
 				//too fried to finish this tonight.
 			});
 
 
 
-		ticketCollection
-			.insertMany(tickets.map(t => t.toJson()), function(err, r) {
-				db.close();
-			});
+		// ticketCollection
+		// 	.insertMany(tickets.map(t => t.toJson()), function(err, r) {
+		// 		db.close();
+		// 	});
 	});
 }
 
