@@ -17,7 +17,7 @@ var finder = new TicketFinder({
 	new Route("PSU", "Pittsburgh")
 ]);
 
-finder.getTicketsInPriceRange(0, 5)
+finder.getTicketsInPriceRange(0, 10)
 	.then(function(payload) {
 		var originId = payload.tickets[0].origin.cityId;
 		payload.tickets.forEach(function(ticket) {
