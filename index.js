@@ -13,14 +13,15 @@ var finder = new TicketFinder({
 	start: "TODAY",
 	latestAvailable: true,
 	weekends: true
-}, [new Route("Pittsburgh", "Philadelphia"),
-	new Route("Philadelphia", "Pittsburgh")
+}, [new Route("Pittsburgh", "PSU"),
+	new Route("PSU", "Pittsburgh")
 ]);
 
 finder.getTicketsInPriceRange(0, 5)
 	.then(function(payload) {
+		var originId = payload.tickets[0].origin.cityId;
 		payload.tickets.forEach(function(ticket) {
-			var color = ticket.origin.cityId == 128 ? "blue" : "yellow",
+			var color = ticket.origin.cityId == originId ? "blue" : "yellow",
 				coloredLogMsg = colorsLogMethods[color](ticket+"");
 
 			console.log(coloredLogMsg);

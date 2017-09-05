@@ -331,6 +331,8 @@
     "id": 137,
     "name": "State College, PA"
   },
+  "PENN STATE": "STATE COLLEGE",
+  "PSU": "STATE COLLEGE",
   "SYRACUSE": {
     "id": 139,
     "name": "Syracuse, NY"
