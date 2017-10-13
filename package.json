@@ -15,10 +15,13 @@
     "request": "^2.81.0",
     "request-promise": "^4.2.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"inspect": "nodemon --inspect --debug-brk index.js"
+    "inspect": "nodemon --inspect --debug-brk index.js"
   },
   "repository": {
     "type": "git",
