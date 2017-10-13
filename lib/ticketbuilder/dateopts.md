@@ -12,3 +12,6 @@ This is an array of numbers that stand for each day.
 | 4 | Thursday  |
 | 5 | Friday    |
 | 6 | Saturday  |
+
+## Weekends
+This will auto make the `days` option `[5,6,0]`
