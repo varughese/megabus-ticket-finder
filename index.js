@@ -10,14 +10,16 @@ var TicketFinder = require("./lib/ticketfinder");
 var Route = require("./lib/route");
 
 var finder = new TicketFinder({
-	start: "TODAY",
+	// start: "TODAY",
 	latestAvailable: true,
-	weekends: true
+	start: "2017-11-17",
+	// end: "2017-11-17",
+	weekends: true,
 }, [new Route("Pittsburgh", "PSU"),
 	new Route("PSU", "Pittsburgh")
 ]);
 
-finder.getTicketsInPriceRange(0, 10)
+finder.getTicketsInPriceRange(0, 5)
 	.then(function(payload) {
 		var originId = payload.tickets[0].origin.cityId;
 		payload.tickets.forEach(function(ticket) {
