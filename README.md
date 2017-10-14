@@ -1,6 +1,4 @@
-# Megabus $1 Fare Finder
+![Megabus Ticket Finder](https://i.imgur.com/qwyBbqT.png)
 [![Build Status](https://travis-ci.org/varughese/bus-finder.svg?branch=master)](https://travis-ci.org/varughese/bus-finder)
 
-Looks through Megabus for $1 fares.
-
-Shoutout to this repo, the code gave me a good idea on how to structure my objects: (node-megabus)[https://github.com/pilwon/node-megabus]
+This project makes requests to [megabus](megabus.com)' internal API to make finding cheap tickets easier.
