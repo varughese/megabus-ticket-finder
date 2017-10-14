@@ -11,13 +11,14 @@ const Route = require("./lib").Route;
 
 var finder = new TicketFinder({
 	start: "TODAY",
-	latestAvailable: true,
+	// latestAvailable: true,
+	end: "2017-12-20",
 	// start: "2017-11-17",
-	end: "2017-11-17",
+
 	// weekends: true,
 	days: [4, 5, 6, 0, 1]
-}, [new Route("Pittsburgh", "PSU"),
-	new Route("PSU", "Pittsburgh")
+}, [new Route("Pittsburgh", "PHILADELPHIA"),
+	// new Route("PSU", "Pittsburgh")
 ]);
 
 finder.getTicketsInPriceRange(0, 1)
