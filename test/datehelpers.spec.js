@@ -1,4 +1,4 @@
-let helpers = require("../lib/ticketbuilder/set-date-helpers");
+let helpers = require("../lib/helpers/set-date-helpers");
 let assert = require("chai").assert;
 let moment = require("moment");
 let mocks = require("./mocks/datehelpers.mock.json");

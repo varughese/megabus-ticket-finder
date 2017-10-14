@@ -6,8 +6,8 @@ var MongoClient = require("mongodb").MongoClient,
 var colorsLogMethods = require("colors/safe");
 
 
-var TicketFinder = require("./lib/ticketfinder");
-var Route = require("./lib/route");
+const TicketFinder = require("./lib").TicketFinder;
+const Route = require("./lib").Route;
 
 var finder = new TicketFinder({
 	start: "TODAY",

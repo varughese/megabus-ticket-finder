@@ -1,5 +1,6 @@
-var TicketFinder = require("../lib/ticketfinder");
-var Route = require("../lib/route");
+const TicketFinder = require("../lib").TicketFinder;
+const Route = require("../lib").Route;
+
 var assert = require("chai").assert;
 
 
