@@ -8,11 +8,14 @@ var assert = require("chai").assert;
 describe("Ticket Finder::", function() {
 	this.timeout(10000);
 
+	let endDate = moment().add(30, 'days').format("YYYY-MM-DD"),
+		startDate = moment().add(10, 'days').format("YYYY-MM-DD") ;
+
 	beforeEach(function() {
 
 	});
 
-	it("Gets back data::", function(done) {
+	it("Latest Available::", function(done) {
 		let finder = new TicketFinder({
 			start: "TODAY",
 			latestAvailable: true,
@@ -30,10 +33,10 @@ describe("Ticket Finder::", function() {
 			});
 	});
 
-	it("Works with a end date::", function(done) {
+	it("Start TODAY and End date::", function(done) {
 		let finder = new TicketFinder({
 			start: "TODAY",
-			end: moment().add(40, 'days').format("YYYY-MM-DD"),
+			end: endDate,
 			days: [5]
 		}, [new Route("Pittsburgh", "PSU")]);
 
@@ -47,4 +50,23 @@ describe("Ticket Finder::", function() {
 				done(err);
 			});
 	});
+
+	it("Start date and two Routes::", function(done) {
+		let finder = new TicketFinder({
+			start: startDate,
+			end: endDate,
+			days: [5]
+		}, [new Route("Pittsburgh", "PSU"), new Route("PSU", "Pittsburgh")]);
+
+		finder.findTickets()
+			.then(function(tickets) {
+				assert(tickets.length > 0);
+				if(tickets.length > 0)
+					done();
+			})
+			.catch(function(err) {
+				done(err);
+			});
+	});
+
 });
