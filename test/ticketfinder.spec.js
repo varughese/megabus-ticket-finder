@@ -9,7 +9,7 @@ describe("Ticket Finder::", function() {
 	this.timeout(10000);
 
 	let endDate = moment().add(30, 'days').format("YYYY-MM-DD"),
-		startDate = moment().add(10, 'days').format("YYYY-MM-DD") ;
+		startDate = moment().add(10, 'days').format("YYYY-MM-DD");
 
 	beforeEach(function() {
 
