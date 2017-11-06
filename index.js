@@ -11,12 +11,12 @@ const Route = require("./lib").Route;
 
 var finder = new TicketFinder({
 	start: "TODAY",
-	// latestAvailable: true,
-	end: "2017-12-20",
+	latestAvailable: true,
+	// end: "2017-12-20",
 	// start: "2017-11-17",
 
-	// weekends: true,
-	days: [6]
+	weekends: true,
+	// days: [6]
 }, [new Route("Pittsburgh", "PHILADELPHIA"),
 	new Route("Philadelphia", "Pittsburgh")
 ]);
