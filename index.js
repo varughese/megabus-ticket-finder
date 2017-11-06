@@ -34,4 +34,7 @@ finder.getTicketsInPriceRange(0, 10)
 			saveTicket(ticket.toJson());
 		});
 		console.log('\n');
+	})
+	.then(function() {
+		process.exit(0);
 	});
