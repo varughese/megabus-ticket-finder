@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const admin = require("firebase-admin");
 const config = require("../lib/config");
 
