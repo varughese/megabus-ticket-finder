@@ -16,11 +16,12 @@ var finder = new TicketFinder({
 
 	weekends: true,
 	// days: [6]
-}, [new Route("Pittsburgh", "PHILADELPHIA"),
-	new Route("Philadelphia", "Pittsburgh")
+}, [new Route("Pittsburgh", "PSU"),
+	new Route("PSU", "Pittsburgh")
 ]);
 
 let saveTicket = require("./firebase/save-ticket");
+let goOffline = require("./firebase/go-offline");
 
 finder.getTicketsInPriceRange(0, 10)
 	.then(function(payload) {
@@ -35,5 +36,5 @@ finder.getTicketsInPriceRange(0, 10)
 		console.log('\n');
 	})
 	.then(function() {
-		process.exit(0);
+		goOffline();
 	});

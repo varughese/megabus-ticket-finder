@@ -1,4 +1,4 @@
-var db = require("./firebase");
+var db = require("./firebase").database();
 
 let ticketsRef = db.ref("tickets");
 

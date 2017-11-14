@@ -1,5 +1,5 @@
-var db = require("./firebase");
+var firebase = require("./firebase");
 
 module.exports = function() {
-	db.goOffline();
+	return firebase.app().delete();
 };
