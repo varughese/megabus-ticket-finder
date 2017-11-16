@@ -1,5 +1,9 @@
 let private_key = process.env.FB_PRIVATE_KEY;
 
+if(process.env.TRAVIS_CI) {
+	private_key.replace(/jawnjawnjawnjawnjawnjawnjawnjawn/g, "\n");
+}
+
 let pk = ["-----BEGIN PRIVATE KEY-----",
 "MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCVchyACg2yUDG3",
 "Zq8w2+SYbJBlEmxx3z32nP9OAWjwGYh2d0xNIS00lF9f6XcQd2OHktRLHyS2x8nw",
