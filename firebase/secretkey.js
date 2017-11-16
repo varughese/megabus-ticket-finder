@@ -1,3 +1,9 @@
+let FB_PRIVATE_KEY = process.env.FB_PRIVATE_KEY;
+
+if(process.env.TRAVIS_CI) {
+	FB_PRIVATE_KEY = JSON.parse("\"" + process.env.FB_PRIVATE_KEY + "\"");
+}
+
 module.exports = {
   "type": "service_account",
   "project_id": "megabus-ticket-tracker",

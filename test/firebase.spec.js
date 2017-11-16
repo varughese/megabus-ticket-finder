@@ -4,7 +4,7 @@ let firebase;
 var assert = require("chai").assert;
 
 
-describe.skip("Firebase::", function() {
+describe("Firebase::", function() {
 	this.timeout(200);
 	let closeFirebase = require("../firebase/go-offline");
 
