@@ -1,8 +1,10 @@
+let private_key = process.env.FB_PRIVATE_KEY;
+
 module.exports = {
   "type": "service_account",
   "project_id": "megabus-ticket-tracker",
   "private_key_id": process.env.FB_PRIVATE_KEY_ID,
-  "private_key": process.env.FB_PRIVATE_KEY,
+  "private_key": JSON.parse(private_key),
   "client_email": process.env.FB_CLIENT_EMAIL,
   "client_id": "112567519630224098537",
   "auth_uri": "https://accounts.google.com/o/oauth2/auth",
