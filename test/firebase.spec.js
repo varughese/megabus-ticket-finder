@@ -1,11 +1,12 @@
 let firebase;
-let closeFirebase = require("../firebase/go-offline");
+
 
 var assert = require("chai").assert;
 
 
 describe.skip("Firebase::", function() {
 	this.timeout(200);
+	let closeFirebase = require("../firebase/go-offline");
 
 	beforeEach(function() {
 
