@@ -29,6 +29,9 @@
 				<button onclick="getTickets()">Go</button>
 			</div>
 		</div>
+
+		<div id="results">
+		</div>
     </body>
 	<script>
 	function getSelectValue(selectId) {
@@ -45,9 +48,10 @@
 		   console.log('Inside the onload event');
 		 };
 		 oReq.onload = function (e) {
-		    console.log(e.target.response);
+			document.getElementById("results").innerHTML = e.target.response;
 		};
 		 oReq.onreadystatechange = function () {
+			 document.getElementById("results").innerHTML = "Loading ..."
 		   console.log('Inside the onreadystatechange event with readyState:');
 		 };
 		 oReq.open('GET', `/api/tickets?originId=${departingId}&destinationId=${returningId}`, true);
