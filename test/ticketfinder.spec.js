@@ -68,5 +68,4 @@ describe("Ticket Finder::", function() {
 				done(err);
 			});
 	});
-
 });

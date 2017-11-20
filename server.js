@@ -61,9 +61,7 @@ app.get('/example', function(req, res) {
 
 		weekends: true,
 		// days: [6]
-	}, [new Route("Pittsburgh", "PSU"), new Route("PSU", "Pittsburgh"),
-	new Route("Philadelphia", "Pittsburgh").swap()
-	]);
+	}, [new Route("Pittsburgh", "PSU"), new Route("Pittsburgh", "Philadelphia")]);
 
 	finder.getTicketsInPriceRange(0,5)
 		.then(function(payload) {

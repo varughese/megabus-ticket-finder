@@ -333,6 +333,9 @@
   },
   "PENN STATE": "STATE COLLEGE",
   "PSU": "STATE COLLEGE",
+  "137": "STATE COLLEGE",
+  "128": "PITTSBURGH",
+  "127": "PHILADELPHIA",
   "SYRACUSE": {
     "id": 139,
     "name": "Syracuse, NY"
