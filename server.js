@@ -20,19 +20,28 @@ app.use(function(req, res, next) {
 
 app.use(morgan('dev'));
 
+function _makeArrayFromString(string) {
+	return string ? string.slice(1, -1).split(",") : undefined;
+}
+
+function _normalizeDate(date) {
+	return date ? new Date(date) : undefined;
+}
+
 app.get('/api/tickets', function(req, res) {
 	console.log(req.query);
 
 	let originId = Number(req.query.originId);
 	let destinationId = Number(req.query.destinationId);
-	var finder = new TicketFinder({
-		start: "TODAY",
-		latestAvailable: true,
-		// end: "2017-12-20",
-		// start: "2017-11-17",
+	let start = _normalizeDate(req.query.start);
+	let end = _normalizeDate(req.query.end);
+	let days = _makeArrayFromString(req.query.days);
 
-		weekends: true,
-		// days: [6]
+	var finder = new TicketFinder({
+		start: start,
+		latestAvailable: true,
+		end: end,
+		days: days
 	}, [new Route(originId, destinationId), new Route(destinationId, originId)
 	]);
 
