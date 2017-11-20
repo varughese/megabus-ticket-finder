@@ -19,7 +19,7 @@ app.use(function(req, res, next) {
 
 app.use(morgan('dev'));
 
-app.get('/', function(req, res) {
+app.get('/example', function(req, res) {
 	const TicketFinder = require("./lib").TicketFinder;
 	const Route = require("./lib").Route;
 
@@ -50,4 +50,7 @@ app.get('/', function(req, res) {
 });
 
 app.listen(config.PORT);
+
+app.use(express.static(__dirname + '/public'));
+
 console.log('Magic happening on port', config.PORT);
