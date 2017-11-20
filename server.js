@@ -5,7 +5,8 @@ var express = require('express'),
     path = require('path');
 
 var config = require('./lib/config');
-
+const TicketFinder = require("./lib").TicketFinder;
+const Route = require("./lib").Route;
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -19,9 +20,38 @@ app.use(function(req, res, next) {
 
 app.use(morgan('dev'));
 
+app.get('/api/tickets', function(req, res) {
+	console.log(req.query);
+
+	let originId = Number(req.query.originId);
+	let destinationId = Number(req.query.destinationId);
+	var finder = new TicketFinder({
+		start: "TODAY",
+		latestAvailable: true,
+		// end: "2017-12-20",
+		// start: "2017-11-17",
+
+		weekends: true,
+		// days: [6]
+	}, [new Route(originId, destinationId), new Route(destinationId, originId)
+	]);
+
+	res.setHeader('content-type', 'text/html');
+	finder.getTicketsInPriceRange(0,5)
+		.then(function(payload) {
+			res.setHeader('content-type', 'text/html');
+			var lines = "";
+			payload.tickets.forEach(function(ticket) {
+				lines+= ticket.toHtml();
+			});
+
+
+			res.send(lines);
+		});
+});
+
 app.get('/example', function(req, res) {
-	const TicketFinder = require("./lib").TicketFinder;
-	const Route = require("./lib").Route;
+
 
 	var finder = new TicketFinder({
 		start: "TODAY",

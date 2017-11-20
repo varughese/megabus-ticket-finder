@@ -40,6 +40,18 @@
 		var departingId = getSelectValue("departing");
 		var returningId = getSelectValue("returning");
 		console.log(departingId, returningId);
+		var oReq = new XMLHttpRequest();
+		 oReq.onload = function () {
+		   console.log('Inside the onload event');
+		 };
+		 oReq.onload = function (e) {
+		    console.log(e.target.response);
+		};
+		 oReq.onreadystatechange = function () {
+		   console.log('Inside the onreadystatechange event with readyState:');
+		 };
+		 oReq.open('GET', `/api/tickets?originId=${departingId}&destinationId=${returningId}`, true);
+		 oReq.send();
 	}
 	</script>
 </html>
