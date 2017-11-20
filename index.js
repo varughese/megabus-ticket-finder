@@ -16,8 +16,7 @@ var finder = new TicketFinder({
 
 	weekends: true,
 	// days: [6]
-}, [new Route("Pittsburgh", "PSU"),
-	new Route("PSU", "Pittsburgh")
+}, [new Route(127, 128)
 ]);
 
 let saveTicket = require("./firebase/save-ticket");
