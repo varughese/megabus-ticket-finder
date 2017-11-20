@@ -20,7 +20,6 @@ describe("Routes::", function() {
 
 	it("Can understand city ID numbers::", function() {
 		let route = new Route("128", "137");
-		console.log(route);
 		assert(route.originId, 128);
 		assert(route.destinationId, 137);
 	});
