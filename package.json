@@ -23,7 +23,7 @@
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test",
-    "inspect": "nodemon --inspect --debug-brk index.js"
+    "inspect": "nodemon --inspect --inspect-brk index.js"
   },
   "repository": {
     "type": "git",

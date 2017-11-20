@@ -16,7 +16,7 @@ var finder = new TicketFinder({
 
 	weekends: true,
 	// days: [6]
-}, [new Route(127, 128)
+}, [new Route("Philadelphia", "Pittsburgh")
 ]);
 
 let saveTicket = require("./firebase/save-ticket");
@@ -24,7 +24,7 @@ let goOffline = require("./firebase/go-offline");
 
 finder.getTicketsInPriceRange(0, 10)
 	.then(function(payload) {
-		var originId = payload.tickets[0].origin.cityId;
+		var originId = payload.tickets[0] ? payload.ticket[0].origin.cityId : 0;
 		payload.tickets.forEach(function(ticket) {
 			var color = ticket.origin.cityId == originId ? "blue" : "yellow",
 				coloredLogMsg = colorsLogMethods[color](ticket+"");
