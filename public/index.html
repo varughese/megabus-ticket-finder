@@ -1,13 +1,45 @@
-Departing
-<select>
-	<option value="128">Pittsburgh</option>
-	<option value="127">Philadelphia</option>
-	<option value="137">PSU</option>
-</select>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+		<title>Megabus Ticket Finder</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    </head>
+    <body>
+		<div class="container-fluid">
+			<div class="row">
+				<h4>Departing </h4>
+				<select id="departing">
+					<option value="128">Pittsburgh</option>
+					<option value="127">Philadelphia</option>
+					<option value="137">PSU</option>
+				</select>
+			</div>
+			<div class="row">
+				<h4>Returning </h4>
+				<select id="returning">
+					<option value="128">Pittsburgh</option>
+					<option value="127">Philadelphia</option>
+					<option value="137">PSU</option>
+				</select>
+			</div>
+			<div class="row">
+				<button onclick="getTickets()">Go</button>
+			</div>
+		</div>
+    </body>
+	<script>
+	function getSelectValue(selectId) {
+		var e = document.getElementById(selectId);
+		return e.options[e.selectedIndex].value;
+	}
 
-Returning
-<select>
-	<option value="128">Pittsburgh</option>
-	<option value="127">Philadelphia</option>
-	<option value="137">PSU</option>
-</select>
+	function getTickets() {
+		var departingId = getSelectValue("departing");
+		var returningId = getSelectValue("returning");
+		console.log(departingId, returningId);
+	}
+	</script>
+</html>
