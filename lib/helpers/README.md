@@ -1,3 +1,6 @@
+# Requester
+This actually makes the calls to Megabus.com with the `request` module.
+
 # Date Options
 
 ## Days
