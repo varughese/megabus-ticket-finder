@@ -5,7 +5,7 @@
 This project makes requests to [megabus](megabus.com)' internal API to make finding cheap tickets easier.
 
 
-#### Here something really quickly hacked together: [https://megabustickerfinder.herokuapp.com/](https://megabustickerfinder.herokuapp.com/) (its not even close to done)
+#### Here is a web app I really quickly hacked together: [https://megabustickerfinder.herokuapp.com/](https://megabustickerfinder.herokuapp.com/) (its not even close to done)
 
 ## How to Use
 If you would like to use this with Node, you can! The backend "ticket finding" library is not separated from the frontend, but that can be done if a request is made.
@@ -45,5 +45,7 @@ Heres what this will produce ![Terminal Window](https://i.imgur.com/AfG6y6D.png)
 - Search Megabus tickets to save money
 - Set up price alerts
 - Track price history of tickets
+
+There is some documentation on how it will save tickets [here](https://github.com/varughese/megabus-ticket-finder/blob/master/firebase/saving-workflow.md).
 
 I wrote a Medium article when I first started this project if you are interested [here](https://medium.com/@matvarughese3/creating-a-megabus-scraper-with-node-a7074973c1ab).
