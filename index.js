@@ -1,9 +1,4 @@
-/*jshint esversion: 6 */
-var MongoClient = require("mongodb").MongoClient,
-	url = 'mongodb://localhost:27017/megabustest';
-// Use connect method to connect to the Server
 var colorsLogMethods = require("colors/safe");
-
 
 const TicketFinder = require("./lib").TicketFinder;
 const Route = require("./lib").Route;
