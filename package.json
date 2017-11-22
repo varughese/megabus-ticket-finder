@@ -1,5 +1,5 @@
 {
-  "name": "bus-finder",
+  "name": "megabus-ticket-finder",
   "version": "1.0.0",
   "description": "Tryna cop some Megabus deals",
   "main": "index.js",
@@ -27,12 +27,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/varughese/bus-finder.git"
+    "url": "git+https://github.com/varughese/megabus-ticket-finder.git"
   },
   "author": "Mathew Varughese",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/varughese/bus-finder/issues"
+    "url": "https://github.com/varughese/megabus-ticket-finder/issues"
   },
-  "homepage": "https://github.com/varughese/bus-finder#readme"
+  "homepage": "https://github.com/varughese/megabus-ticket-finder#readme"
 }
