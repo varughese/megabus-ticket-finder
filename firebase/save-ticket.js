@@ -1,25 +1,42 @@
-var db = require("./firebase").database();
+let firebase = require("./firebase");
+let db = firebase.database();
+let TicketHistoryTransaction = require("../lib/classes/tickethistory");
 
 let ticketsRef = db.ref("tickets");
-let ticketHistory = db.ref("ticket_history");
+let ticketHistoryRef = db.ref("ticket_history");
 
-
-function createTicket(journeyRef, ticketInfo) {
-	return journeyRef.set(ticketInfo.toJson());
+function upsertTransaction(ticketInfo) {
+	let timestamp = firebase.database.ServerValue.TIMESTAMP;
+	let trans = new TicketHistoryTransaction(ticketInfo, timestamp);
+	return ticketHistoryRef.child(ticketInfo.journeyId).push(trans);
 }
 
-function updateTicket(snapshot, journeyRef, ticketInfo) {
-	// console.log("OLD INFO", snapshot.val());
-	return journeyRef.update(ticketInfo.toJson());
+function createTicket(ticketRef, ticketInfo) {
+	return ticketRef.set(ticketInfo.toJson())
+		.then(function() {
+			return upsertTransaction(ticketInfo);
+		});
+
+}
+
+function updateTicket(outdatedTicket, ticketRef, ticketInfo) {
+	let oldPrice = outdatedTicket.price;
+	return ticketRef.update(ticketInfo.toJson())
+		.then(function() {
+			if(ticketInfo.price !== oldPrice) {
+				return upsertTransaction(ticketInfo);
+			}
+		});
 }
 
 module.exports = function(ticketInfo) {
-	let journeyRef = db.ref(`tickets/${ticketInfo.journeyId}`);
+	let ticketRef = db.ref(`tickets/${ticketInfo.journeyId}`);
 
-	return journeyRef.once("value", function(snapshot) {
-		if(snapshot.val())
-			return updateTicket(snapshot, journeyRef, ticketInfo);
+	return ticketRef.once("value", function(snapshot) {
+		let val = snapshot.val();
+		if(val)
+			return updateTicket(val, ticketRef, ticketInfo);
 		else
-			return createTicket(journeyRef, ticketInfo);
+			return createTicket(ticketRef, ticketInfo);
 	});
 };
