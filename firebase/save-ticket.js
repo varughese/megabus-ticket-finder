@@ -26,17 +26,23 @@ function updateTicket(outdatedTicket, ticketRef, ticketInfo) {
 			if(ticketInfo.price !== oldPrice) {
 				return upsertTransaction(ticketInfo);
 			}
+			return ticketInfo;
 		});
 }
 
 module.exports = function(ticketInfo) {
-	let ticketRef = db.ref(`tickets/${ticketInfo.journeyId}`);
+	return new Promise(function(resolve, reject) {
+		let ticketRef = db.ref(`tickets/${ticketInfo.journeyId}`);
 
-	return ticketRef.once("value", function(snapshot) {
-		let val = snapshot.val();
-		if(val)
-			return updateTicket(val, ticketRef, ticketInfo);
-		else
-			return createTicket(ticketRef, ticketInfo);
+		ticketRef.once("value", function(snapshot) {
+			let val = snapshot.val(), promise;
+			if(val)
+				promise = updateTicket(val, ticketRef, ticketInfo);
+			else
+				promise = createTicket(ticketRef, ticketInfo);
+
+			promise.then(resolve).catch(reject);
+		});
 	});
+
 };

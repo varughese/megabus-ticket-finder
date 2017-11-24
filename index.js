@@ -38,5 +38,5 @@ finder.getTicketsInPriceRange(0, 5)
 	// 	console.log(redColoredLogMsg("GITHUB"), CONFIG.BOOKMARKS.GITHUB);
 	// })
 	.then(function() {
-		// goOffline();
+		goOffline();
 	});
