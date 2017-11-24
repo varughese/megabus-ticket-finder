@@ -331,11 +331,14 @@
     "id": 137,
     "name": "State College, PA"
   },
+  "NY": "NEW YORK",
   "PENN STATE": "STATE COLLEGE",
   "PSU": "STATE COLLEGE",
   "137": "STATE COLLEGE",
   "128": "PITTSBURGH",
+  "PITT": "PITTSBURGH",
   "127": "PHILADELPHIA",
+  "PHILLY": "PHILADELPHIA",
   "SYRACUSE": {
     "id": 139,
     "name": "Syracuse, NY"
