@@ -18,11 +18,12 @@ var finder = new TicketFinder({
 let saveTicket = require("./firebase/save-ticket");
 let goOffline = require("./firebase/go-offline");
 
-finder.getTicketsInPriceRange(0, 5)
-	.then(function(payload) {
+finder.findTickets()
+	.then(function(tickets) {
 		let promises = [];
-		var originId = payload.tickets[0] ? payload.tickets[0].origin.cityId : 0;
-		payload.tickets.forEach(function(ticket) {
+		var originId = tickets[0] ? tickets[0].origin.cityId : 0;
+
+		tickets.forEach(function(ticket) {
 			var color = ticket.origin.cityId == originId ? "blue" : "yellow",
 				coloredLogMsg = colorsLogMethods[color](ticket+"");
 
