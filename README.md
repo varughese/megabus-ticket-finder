@@ -2,8 +2,12 @@
 [![Build Status](https://travis-ci.org/varughese/megabus-ticket-finder.svg?branch=master
 )](https://travis-ci.org/varughese/megabus-ticket-finder)
 
-This project makes requests to [megabus](megabus.com)' internal API to make finding cheap tickets easier.
+## What is this?
+Megabus is a bus line that offers really cheap tickets. Finding these "cheap" tickets however is really cumbersome and tedious on their website.
 
+This project aims to solve this problem by wrapping [megabus](megabus.com)'s internal API.
+
+It is still under development, so stay tuned!
 
 #### Here is a web app I really quickly hacked together: [https://megabustickerfinder.herokuapp.com/](https://megabustickerfinder.herokuapp.com/) (its not even close to done)
 
@@ -49,3 +53,5 @@ Heres what this will produce ![Terminal Window](https://i.imgur.com/AfG6y6D.png)
 There is some documentation on how it will save tickets [here](https://github.com/varughese/megabus-ticket-finder/blob/master/firebase/saving-workflow.md).
 
 I wrote a Medium article when I first started this project if you are interested [here](https://medium.com/@matvarughese3/creating-a-megabus-scraper-with-node-a7074973c1ab).
+
+I also got 50 Megabus tickets for free by using this program. Read more [here](https://medium.com/@matvarughese3/how-i-got-50-megabus-tickets-for-free-8744b59227e9).
