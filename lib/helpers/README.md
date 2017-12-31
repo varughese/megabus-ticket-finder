@@ -21,3 +21,6 @@ This will auto make the `days` option `[5,6,0]`
 
 ## Testing
 The testing is located in the `datehelpers.spec.js` file [here](https://github.com/varughese/megabus-ticket-finder/blob/master/test/datehelpers.spec.js).
+
+# Make FilterID
+This creates the filterId used in the `subscriptions` table. It accepts either a ticket or a string for input. If it is a ticket object, it will make the string. If it is a string, it will validate the string.
