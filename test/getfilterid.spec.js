@@ -8,10 +8,14 @@ describe("Get Filter ID::", function() {
 			"arrivalTime": "2017-11-27T00:35:00.000Z",
 			"date": "2017-11-26T05:00:00.000Z",
 			"departureTime": "2017-11-26T16:35:00.000Z",
-			"destination": "128",
+			"destination": {
+				"cityId": "128"
+			},
 			"duration": "PT8H",
 			"journeyId": "10799367",
-			"origin": "123",
+			"origin": {
+				"cityId": "123"
+			},
 			"price": 103
 		};
 		let filterId = getFilterId(ticket);
