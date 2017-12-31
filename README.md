@@ -50,7 +50,7 @@ Heres what this will produce ![Terminal Window](https://i.imgur.com/AfG6y6D.png)
 - Set up price alerts
 - Track price history of tickets
 
-There is some documentation on how it will save tickets [here](https://github.com/varughese/megabus-ticket-finder/blob/master/firebase/saving-workflow.md).
+There is some documentation on the design of the database and some logic behind some of the complicated mechanisms of the project [here](https://github.com/varughese/megabus-ticket-finder/blob/master/docs/database.md).
 
 I wrote a Medium article when I first started this project if you are interested [here](https://medium.com/@matvarughese3/creating-a-megabus-scraper-with-node-a7074973c1ab).
 

@@ -1,7 +1,5 @@
 # Database Design
-The chosen Database is Firebase, for no reason other than I wanted to try it out. It worked well, because I am not doing any complicated queries and it allows me to easily show non-CS people the basics of how this works.
-
-The hardest part to figure out was probably the `subscriptions` table.
+The database I chose is Google's [Firebase](https://firebase.google.com/). I wanted to try out something different than Mongo or MySQL so I figured why not test this out. It works well for this project, because I am not doing any complicated queries. The database viewer online is pretty cool too.
 
 There are 4 major "tables".
 
@@ -13,6 +11,7 @@ There are 4 major "tables".
 | `users` 	| This contains a list of subscriptions each user is subscribed to 	|
 
 ## Examples
+In these examples, note that you can't store arrays in Firebase (for reasons detailed [here](https://firebase.googleblog.com/2014/04/best-practices-arrays-in-firebase.html))
 #### tickets
 ```json
 {
@@ -32,16 +31,10 @@ There are 4 major "tables".
 #### ticket_history
 ```json
 {
-	"10799081": {
-		"-KzghDyXqPeVuH0667UX": {
-			"price": 19,
-			"timestamp": 1511504802344
-		},
-		"-L-axQruKzkv2N2m50YL": {
-			"price": 29,
-			"timestamp": 1512482127518
-		}
-	}
+	"10799081": [
+		{ "price": 19, "timestamp": 1511504802344 },
+		{ "price": 29, "timestamp": 1512482127518 }
+	]
 }
 ```
 
@@ -92,6 +85,8 @@ Example Ticket:
 - If subscribers, loop through, check if updated price meets alert requirements for each. If so, email those users.
 
 ### New Ticket Price Change
+You can read more [here](https://github.com/varughese/megabus-ticket-finder/blob/master/firebase/).
+
 Example Ticket:
 ```json
 {
@@ -139,4 +134,4 @@ Example "User Story": I want to be emailed if there is a ticket on 2/2/18 below 
 ## Design Decisions
 Wrapping Megabus's API and making calls to it and listing when there are $1 tickets. That stuff is easy. What is hard is thinking about the design of this kind of thing.
 
-I knew from the inception of this project that I was going to make some sort of email/price alert system. I like perfection, so I spent a good amount of time thinking about the most efficient and most elegant way to track the subscriptions. Eventually I decided to just try something out and see how it goes.
+I knew from the inception of this project that I was going to make some sort of email/price alert system. I like perfection, so I spent a good amount of time thinking about the most efficient and most elegant way to design the database. Eventually, I decided to just go ahead and try something out.
