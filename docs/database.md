@@ -103,7 +103,7 @@ Example Ticket:
 
 - Update `tickets`
 - Update `ticket_history`
-- Convert into "Filter String": `"122917_137_128`
+- Convert into "Filter String": `"122917_137_128"`
 - Upsert to `subscriptions.tickets` using filter string as id
 - If subscribers, loop through, check if updated price meets alert requirements for each. If so, email those users.
 
