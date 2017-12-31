@@ -1,4 +1,4 @@
-let firebase = require("./firebase");
+let firebase = require("../firebase");
 let validateFilterId = require("../../lib/helpers/get-filterId");
 let db = firebase.database();
 
@@ -14,7 +14,7 @@ let subscriptionsRef = db.ref("subscriptions");
 
 module.exports = function(data) {
 	let filterId = validateFilterId(data.filterId);
-	subscriptionsRef.child(`${filterId}/subscriptions`).push({
+	return subscriptionsRef.child(`${filterId}/subscriptions`).push({
 		email: data.email,
 		price: data.price
 	});

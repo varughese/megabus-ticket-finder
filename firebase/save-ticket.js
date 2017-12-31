@@ -2,8 +2,12 @@ let firebase = require("./firebase");
 let db = firebase.database();
 let TicketHistoryTransaction = require("../lib/classes/tickethistory");
 
+let updateSubscription = require("./subscriptions/update-subscription");
+
 let ticketsRef = db.ref("tickets");
 let ticketHistoryRef = db.ref("ticket_history");
+
+
 
 function upsertTransaction(ticketInfo) {
 	let timestamp = firebase.database.ServerValue.TIMESTAMP;
@@ -15,8 +19,8 @@ function createTicket(ticketRef, ticketInfo) {
 	return ticketRef.set(ticketInfo.toJson())
 		.then(function() {
 			return upsertTransaction(ticketInfo);
-		});
-
+		})
+		.then(updateSubscription.pushTicket.bind(null, ticketInfo));
 }
 
 function updateTicket(outdatedTicket, ticketRef, ticketInfo) {
@@ -24,10 +28,12 @@ function updateTicket(outdatedTicket, ticketRef, ticketInfo) {
 	return ticketRef.update(ticketInfo.toJson())
 		.then(function() {
 			if(ticketInfo.price !== oldPrice) {
-				return upsertTransaction(ticketInfo);
+				return upsertTransaction(ticketInfo)
+					.then(updateSubscription.alertUsers.bind(null, ticketInfo));
 			}
 			return ticketInfo;
-		});
+		})
+		.catch(console.error);
 }
 
 module.exports = function(ticketInfo) {
@@ -41,7 +47,9 @@ module.exports = function(ticketInfo) {
 			else
 				promise = createTicket(ticketRef, ticketInfo);
 
-			promise.then(resolve).catch(reject);
+			promise
+				.then(resolve)
+				.catch(reject);
 		});
 	});
 

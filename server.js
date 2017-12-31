@@ -59,6 +59,16 @@ app.get('/api/tickets', function(req, res) {
 		});
 });
 
+app.post('/api/subscriber', function(req, res) {
+	const addSubscription = require("./firebase/subscriptions/new-subscriber");
+	addSubscription(req.body)
+		.then(res.send.bind(null, 200))
+		.catch(function(err) {
+			console.error(err);
+			res.send(400);
+		});
+});
+
 app.get('/example', function(req, res) {
 
 

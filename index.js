@@ -5,9 +5,9 @@ const Route = require("./lib").Route;
 const CONFIG = require("./lib").config;
 
 var finder = new TicketFinder({
-	start: "2018-01-09",
-	latestAvailable: true,
-	// end: "2017-12-20",
+	start: "2018-02-10",
+	// latestAvailable: true,
+	end: "2018-02-10",
 	// start: "2017-11-17",
 
 	// weekends: true,
@@ -15,8 +15,8 @@ var finder = new TicketFinder({
 	// days: [4, 5]
 	days: [0, 1, 4, 5]
 }, [
-	new Route("PSU", "Pittsburgh"),
-	new Route("PSU", "Pittsburgh").swap(),
+	new Route("Dallas", "Houston"),
+	// new Route("PSU", "Pittsburgh").swap(),
 //	new Route("Pittsburgh", "Philly"),
 //	new Route("Pittsburgh", "Philly").swap(),
 ]);
@@ -24,7 +24,7 @@ var finder = new TicketFinder({
 let saveTicket = require("./firebase/save-ticket");
 let goOffline = require("./firebase/go-offline");
 
-finder.getTicketsInPriceRange(0, 1)
+finder.getTicketsInPriceRange(0, 100)
 	.then(function(tickets) {
 		tickets = tickets.tickets;
 		let promises = [];
@@ -32,7 +32,7 @@ finder.getTicketsInPriceRange(0, 1)
 
 		tickets.forEach(function(ticket) {
 			var color = ticket.origin.cityId == originId ? "blue" : "yellow",
-				coloredLogMsg = colorsLogMethods[color](ticket+"");
+				coloredLogMsg = colorsLogMethods[color](ticket);
 
 			console.log(coloredLogMsg);
 			promises.push(saveTicket(ticket));
