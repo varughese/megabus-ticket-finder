@@ -14,7 +14,7 @@ let subscriptionsRef = db.ref("subscriptions");
 
 module.exports = function(data) {
 	let filterId = validateFilterId(data.filterId);
-	return subscriptionsRef.child(`${filterId}/subscriptions`).push({
+	return subscriptionsRef.child(`${filterId}/subscribers`).push({
 		email: data.email,
 		price: data.price
 	});
