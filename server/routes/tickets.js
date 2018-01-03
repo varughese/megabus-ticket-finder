@@ -26,10 +26,9 @@ module.exports = function(apiRouter) {
 
 			let finder = new TicketFinder(finderOptions, routes);
 
-			let minPrice = req.query.minPrice || 0;
-			let maxPrice = req.query.maxPrice || 200;
+			let minPrice = Number(req.query.minPrice) || 0;
+			let maxPrice = Number(req.query.maxPrice) || 200;
 
-			console.log(finderOptions);
 			finder.getTicketsInPriceRange(minPrice, maxPrice)
 				.then(function(payload) {
 					res.send(payload);

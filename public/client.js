@@ -1,13 +1,8 @@
-/* eslint-disable no-console */
-/* eslint-disable no-undef */
 window.client = (function() {
 	function getTickets(opts) {
-		let qs = `?originId=${opts.originId}&
-				  destinationId=${opts.destinationId}&
-				  start=${opts.start}&
-				  days=${opts.days}
-				  maxPrice=${opts.maxPrice}`;
-		return fetch(`/api/tickets/${qs}`, {
+		const qs = `?originId=${opts.originId}&destinationId=${opts.destinationId}&start=${opts.start}&days=${opts.days}&maxPrice=${opts.maxPrice}`;
+		const url = `/api/tickets/${qs}`;
+		return fetch(url, {
 			headers: {
 				Accept: 'application/json'
 			}
@@ -62,8 +57,5 @@ window.client = (function() {
 	function parseJSON(response) {
 		return response.json();
 	}
-
-	return {
-		getTickets
-	};
+	return {getTickets};
 }());

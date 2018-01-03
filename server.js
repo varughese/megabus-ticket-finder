@@ -6,6 +6,7 @@ let express = require('express'),
 
 let config = require('./lib/config');
 
+app.use('/', express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
@@ -20,12 +21,6 @@ app.use(morgan('dev'));
 
 let apiRoutes = require('./server/routes/api')(app, express);
 app.use('/api', apiRoutes);
-
-app.use(express.static(__dirname + '/public'));
-
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/index.html'));
-});
 
 app.listen(config.PORT);
 console.log('Magic happening on port', config.PORT);
