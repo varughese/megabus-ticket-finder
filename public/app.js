@@ -22,8 +22,8 @@ class TicketFinderContainer extends React.Component {
 		let tickets = data.tickets ? data.tickets : data;
 		tickets.map((ticket) => {
 			ticket.date = ticket.date.slice(0,10);
-			ticket.departureTime = ticket.departureTime.slice(11,19);
-			ticket.arrivalTime = ticket.arrivalTime.slice(11,19);
+			ticket.departureTime = ticket.departureTime.slice(11,16);
+			ticket.arrivalTime = ticket.arrivalTime.slice(11,16);
 			return ticket;
 		});
 		this.setState({
