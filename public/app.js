@@ -20,6 +20,12 @@ class TicketFinderContainer extends React.Component {
 
 	updateTickets(data) {
 		let tickets = data.tickets ? data.tickets : data;
+		tickets.map((ticket) => {
+			ticket.date = ticket.date.slice(0,10);
+			ticket.departureTime = ticket.departureTime.slice(11,19);
+			ticket.arrivalTime = ticket.arrivalTime.slice(11,19);
+			return ticket;
+		});
 		this.setState({
 			loading: false,
 			tickets: tickets
@@ -71,35 +77,44 @@ class SearchOptions extends React.Component {
 
 	render() {
 		return (
-			<form onSubmit={this.getTickets}>
+			<form className="ui form" onSubmit={this.getTickets}>
+				<div className="field">
+					<div className="five fields">
+						<div className="four wide field">
+							<label>Origin</label>
+							<select name="originId" className="ui dropdown fluid" defaultValue={this.state.originId} id="departing" onChange={this.handleInputChange}>
+								<option value="128">Pittsburgh</option>
+								<option value="127">Philadelphia</option>
+								<option value="137">PSU</option>
+								<option value="123">New York</option>
+							</select>
+						</div>
+						<div className="four wide field">
+							<label>Destination </label>
+							<select className="ui dropdown fluid" name="destinationId" id="returning" defaultValue={this.state.destinationId} onChange={this.handleInputChange}>
+								<option value="128">Pittsburgh</option>
+								<option value="127">Philadelphia</option>
+								<option value="137">PSU</option>
+							</select>
+						</div>
+						<div className="two wide field">
+							<label>Max Price</label>
+							<input placeholder="Max Price" type="number" name="maxPrice" value={this.state.maxPrice} onChange={this.handleInputChange}></input>
+						</div>
+						<div className="two wide field">
+							<label>Days</label>
+							<input name="days" value={this.state.days} onChange={this.handleInputChange}></input>
+						</div>
+						<div className="four wide field">
+							<label>Start Date</label>
+							<input type="date" name="start" value={this.state.start} onChange={this.handleInputChange}></input>
+						</div>
+					</div>
+				</div>
+
+
 				<div className="form-group">
-				  <label htmlFor="departing">Origin</label>
-				  <select className="form-control" defaultValue={this.state.originId} id="departing" onChange={this.handleInputChange}>
-					  <option value="128">Pittsburgh</option>
-					  <option value="127">Philadelphia</option>
-					  <option value="137">PSU</option>
-					  <option value="123">New York</option>
-				  </select>
-				</div>
-				<div className="form-group">
-					<label htmlFor="returning">Destination </label>
-					<select className="form-control" id="returning" defaultValue={this.state.destinationId} onChange={this.handleInputChange}>
-						<option value="128">Pittsburgh</option>
-						<option value="127">Philadelphia</option>
-						<option value="137">PSU</option>
-					</select>
-				</div>
-				<div>
-					<input placeholder="Max Price" type="number" name="maxPrice" value={this.state.maxPrice} onChange={this.handleInputChange}></input>
-				</div>
-				<div>
-					<input name="days" value={this.state.days} onChange={this.handleInputChange}></input>
-				</div>
-				<div>
-					<input type="date" name="start" value={this.state.start} onChange={this.handleInputChange}></input>
-				</div>
-				<div className="form-group">
-					<button className="btn btn-primary" onClick={this.getTickets}>Go</button>
+					<button className="ui primary button" onClick={this.getTickets}>Search</button>
 				</div>
 			</form>
 		);
@@ -116,7 +131,7 @@ class TicketList extends React.Component {
 			return <div>Loading</div>;
 
 		if(tickets.length)
-			return <div>{tickets}</div>;
+			return <div className="ui relaxed large divided list">{tickets}</div>;
 		else
 			return <div>Search Above!</div>;
 	}
@@ -124,24 +139,22 @@ class TicketList extends React.Component {
 
 class Ticket extends React.Component {
 	render() {
-		console.log(this.props);
 		return (
-			<div className="ticket">
-				<div className="ticket-section">
-					<span className="travel-line travel-line-date">
-						{this.props.date}
-					</span>
-					<span className="travel-line travel-line-time">
-						{this.props.departureTime} - {this.props.arrivalTime}
-					</span>
-				</div>
-				<div className="ticket-section">
-					<span className="travel-line travel-line-route">
-						[{this.props.origin.cityName} --> {this.props.destination.cityName}]
-					</span>
-					<span className="travel-line travel-line-price">
-						{this.props.price}
-					</span>
+			<div className="ticket item">
+				<div className="content">
+					<div className="ticket-section header">
+						<div className="travel-line travel-line-date">
+							{this.props.date} --- <i>${this.props.price}</i>
+						</div>
+						<div className="travel-line travel-line-time">
+							{this.props.departureTime} - {this.props.arrivalTime}
+						</div>
+					</div>
+					<div className="ticket-section">
+						<div className="travel-line travel-line-route">
+							{this.props.origin.cityName} --> {this.props.destination.cityName}
+						</div>
+					</div>
 				</div>
 			</div>
 		);
