@@ -51,7 +51,7 @@ class SearchOptions extends React.Component {
 			latestAvailable: true,
 			start: new Date().toISOString().slice(0,10),
 			end: false,
-			days: "0",
+			days: [true,false,false,false,false,false,false],
 			"maxPrice": 40
 		};
 
@@ -61,18 +61,36 @@ class SearchOptions extends React.Component {
 
 	getTickets(event) {
 		event.preventDefault();
-		this.props.getTickets(this.state);
+		let dayString = "";
+		this.state.days.forEach((day, dayIndex) => {
+			if(day) dayString += dayIndex;
+		});
+		let opts = Object.assign({}, this.state, {
+			days: dayString
+		});
+		this.props.getTickets(opts);
 	}
 
 
 	handleInputChange(event) {
 		const target = event.target;
-		const value = target.type === 'checkbox' ? target.checked : target.value;
+		const isCheckbox = target.type === 'checkbox';
+		const value = isCheckbox ? target.checked : target.value;
 		const name = target.name;
 
-		this.setState({
-			[name]: value
-		});
+		if(isCheckbox) {
+			const index = Number(target.attributes["data-day-index"].value);
+			const days = this.state.days.map((day, i) => {
+				return i === index ? !day : day;
+			});
+			this.setState({
+				days: days
+			});
+		} else {
+			this.setState({
+				[name]: value
+			});
+		}
 	}
 
 	render() {
@@ -101,18 +119,46 @@ class SearchOptions extends React.Component {
 							<label>Max Price</label>
 							<input placeholder="Max Price" type="number" name="maxPrice" value={this.state.maxPrice} onChange={this.handleInputChange}></input>
 						</div>
-						<div className="two wide field">
-							<label>Days</label>
-							<input name="days" value={this.state.days} onChange={this.handleInputChange}></input>
-						</div>
 						<div className="four wide field">
 							<label>Start Date</label>
 							<input type="date" name="start" value={this.state.start} onChange={this.handleInputChange}></input>
 						</div>
 					</div>
 				</div>
-
-
+				<div className="field">
+					<label>Days</label>
+					<div className="six fields">
+						{/* <input name="days" value={this.state.days} onChange={this.handleInputChange}></input> */}
+						<div className="ui checkbox one wide field">
+							<input checked={this.state.days[0]} name="days" data-day-index="0" onChange={this.handleInputChange} type="checkbox" />
+							<label>M</label>
+						</div>
+						<div className="ui checkbox one wide field">
+							<input checked={this.state.days[1]} name="days" data-day-index="1" onChange={this.handleInputChange} type="checkbox" />
+							<label>T</label>
+						</div>
+						<div className="ui checkbox one wide field">
+							<input checked={this.state.days[2]} name="days" data-day-index="2" onChange={this.handleInputChange} type="checkbox" />
+							<label>W</label>
+						</div>
+						<div className="ui checkbox one wide field">
+							<input checked={this.state.days[3]} name="days" data-day-index="3" onChange={this.handleInputChange} type="checkbox" />
+							<label>Th</label>
+						</div>
+						<div className="ui checkbox one wide field">
+							<input checked={this.state.days[4]} name="days" data-day-index="4" onChange={this.handleInputChange} type="checkbox" />
+							<label>F</label>
+						</div>
+						<div className="ui checkbox one wide field">
+							<input checked={this.state.days[5]} name="days" data-day-index="5" onChange={this.handleInputChange} type="checkbox" />
+							<label>S</label>
+						</div>
+						<div className="ui checkbox one wide field">
+							<input checked={this.state.days[6]} name="days" data-day-index="6" onChange={this.handleInputChange} type="checkbox" />
+							<label>Su</label>
+						</div>
+					</div>
+				</div>
 				<div className="form-group">
 					<button className="ui primary button" onClick={this.getTickets}>Search</button>
 				</div>
@@ -120,6 +166,7 @@ class SearchOptions extends React.Component {
 		);
 	}
 }
+
 
 class TicketList extends React.Component {
 	render() {
