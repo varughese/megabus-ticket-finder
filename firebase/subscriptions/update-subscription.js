@@ -1,3 +1,5 @@
+const emailer = require("../../lib/emailer/emailer");
+
 let firebase = require("../firebase");
 let db = firebase.database();
 
@@ -16,13 +18,17 @@ function transformToArray(obj) {
 	return Object.keys(obj).map(key => obj[key]);
 }
 
-function _alert(resolve, reject, subscribers, price) {
+function _alert(resolve, reject, subscribers, ticketInfo) {
 	// { '-L1i35ERw0dLG7YIWpS0': { email: 'test@test.com', price: '300' } }
+	let price = ticketInfo.price;
 	let emailsToAlert = transformToArray(subscribers)
 		.filter(s => (price <= s.price))
 		.map(s => s.email);
 
-	console.log("Emailing,", emailsToAlert);
+	if(emailsToAlert) {
+		console.log("Emailing,", emailsToAlert);
+		emailer(emailsToAlert, "single", ticketInfo);
+	}
 
 	resolve(emailsToAlert);
 }
@@ -34,7 +40,7 @@ function alertUsers(ticketInfo) {
 		subscribersRef.once("value", function(snapshot) {
 			let subscribers = snapshot.val();
 			if(subscribers) {
-				_alert(resolve, reject, subscribers, ticketInfo.price);
+				_alert(resolve, reject, subscribers, ticketInfo);
 			} else {
 				resolve(true);
 			}

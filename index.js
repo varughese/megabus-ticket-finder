@@ -6,17 +6,17 @@ const CONFIG = require("./lib").config;
 
 var finder = new TicketFinder({
 	start: "TODAY",
-	latestAvailable: true,
-	// end: "2018-02-10",
+	// latestAvailable: true,
+	end: "2018-01-14",
 	// start: "2017-11-17",
 
 	// weekends: true,
 	// days: [0, 1]
 	// days: [4, 5]
-	days: [0]
+	// days: [0]
 }, [
 	// new Route("Dallas", "Houston"),
-	// new Route("PSU", "Pittsburgh").swap(),
+	new Route("Philly", "Pittsburgh"),
 	// new Route("Pittsburgh", "Philly"),
 	new Route("Pittsburgh", "Philly"),
 ]);

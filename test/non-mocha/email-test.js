@@ -1,7 +1,7 @@
 const moment = require("moment");
 
-const TicketFinder = require("./lib").TicketFinder;
-const Route = require("./lib").Route;
+const TicketFinder = require("../../lib").TicketFinder;
+const Route = require("../../lib").Route;
 
 
 let endDate = moment().add(20, 'days').format("YYYY-MM-DD"),
@@ -20,11 +20,11 @@ function getTickets() {
 		});
 }
 
-const emailer = require("./lib/emailer/emailer");
+const emailer = require("../../lib/emailer/emailer");
 
 
 getTickets()
 	.then(function(ticket) {
 		console.log("EMAILING");
-		emailer("varhawk5@gmail.com", "single", ticket);
+		emailer(["varhawk5@gmail.com", "matvarughese3@gmail.com"], "single", ticket);
 	});
