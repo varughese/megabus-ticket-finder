@@ -9,7 +9,7 @@ This project aims to solve this problem by wrapping [megabus](megabus.com)'s int
 
 It is still under development, so stay tuned!
 
-#### Here is a web app I really quickly hacked together: [https://megabustickerfinder.herokuapp.com/](https://megabustickerfinder.herokuapp.com/) (its not even close to done)
+#### Here is a web app I really quickly hacked together: [https://megabustickerfinder.herokuapp.com/](https://megabustickerfinder.herokuapp.com/) (its not even close to done and is still in development so might not work)
 
 ## How to Use
 If you would like to use this with Node, you can! The backend "ticket finding" library is not separated from the frontend, but that can be done if a request is made.
