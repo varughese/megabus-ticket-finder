@@ -5,26 +5,27 @@ const Route = require("./lib").Route;
 const CONFIG = require("./lib").config;
 
 var finder = new TicketFinder({
-	start: "TODAY",
-	// latestAvailable: true,
-	end: "2018-01-14",
+	start: "2018-03-10",
+	latestAvailable: true,
+	// end: "2018-01-14",
 	// start: "2017-11-17",
 
 	// weekends: true,
-	// days: [0, 1]
-	// days: [4, 5]
+	days: [0, 1],
+	days: [4, 5]
 	// days: [0]
 }, [
-	// new Route("Dallas", "Houston"),
+	new Route("Dallas", "Houston"),
+	new Route("Houston", "Dallas"),
 	new Route("Philly", "Pittsburgh"),
 	// new Route("Pittsburgh", "Philly"),
-	new Route("Pittsburgh", "Philly"),
+	// new Route("PSU", "Pitt"),
 ]);
 
 let saveTicket = require("./firebase/save-ticket");
 let goOffline = require("./firebase/go-offline");
 
-finder.getTicketsInPriceRange(0, 100)
+finder.getTicketsInPriceRange(0, 1)
 	.then(function(tickets) {
 		tickets = tickets.tickets;
 		let promises = [];
