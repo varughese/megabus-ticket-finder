@@ -15,8 +15,6 @@ var finder = new TicketFinder({
 	days: [4, 5]
 	// days: [0]
 }, [
-	new Route("Dallas", "Houston"),
-	new Route("Houston", "Dallas"),
 	new Route("Philly", "Pittsburgh"),
 	// new Route("Pittsburgh", "Philly"),
 	// new Route("PSU", "Pitt"),
@@ -33,7 +31,7 @@ finder.getTicketsInPriceRange(0, 1)
 
 		tickets.forEach(function(ticket) {
 			var color = ticket.origin.cityId == originId ? "blue" : "yellow",
-				coloredLogMsg = colorsLogMethods[color](ticket);
+				coloredLogMsg = colorsLogMethods[color](ticket.toString());
 
 			console.log(coloredLogMsg);
 			promises.push(saveTicket(ticket));

@@ -4,23 +4,23 @@
   "description": "Tryna cop some Megabus deals",
   "main": "index.js",
   "dependencies": {
-    "body-parser": "^1.17.2",
-    "colors": "^1.1.2",
+    "body-parser": "^1.18.2",
+    "colors": "^1.2.4",
     "dotenv": "^4.0.0",
-    "express": "^4.15.3",
-    "firebase-admin": "^5.4.3",
+    "express": "^4.16.3",
+    "firebase-admin": "^5.12.0",
     "handlebars": "^4.0.11",
-    "moment": "^2.18.1",
-    "mongodb": "^2.2.31",
-    "mongoose": "^4.11.5",
-    "morgan": "^1.8.2",
-    "nodemailer": "^4.0.1",
-    "request": "^2.81.0",
-    "request-promise": "^4.2.1"
+    "moment": "^2.22.1",
+    "mongodb": "^2.2.35",
+    "mongoose": "^4.13.12",
+    "morgan": "^1.9.0",
+    "nodemailer": "^4.6.4",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "mocha": "^4.0.1"
+    "mocha": "^4.1.0"
   },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha test",
