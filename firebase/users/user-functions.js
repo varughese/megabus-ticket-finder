@@ -25,18 +25,60 @@ function addSubscription(data) {
 	return usersRef.child(`${userEmail}/subscriptions`).push(filterId);
 }
 
-function _deleteFilterFromUser(email, filterId) {
-
+function _deleteUserFilter(filterId, userSubscriptionsRef) {
+	return new Promise(function (resolve, reject) {
+		let keyToDelete;
+		userSubscriptionsRef.once("value", function (snapshot) {
+			let subscriptions = snapshot.val();
+			if(!subscriptions) {
+				resolve();
+				return;
+			}
+			Object.keys(subscriptions).map(key => {
+				if (subscriptions[key] == filterId) {
+					keyToDelete = key;
+				}
+			});
+			if (!keyToDelete) resolve();
+			userSubscriptionsRef.child(keyToDelete).remove()
+				.then(resolve)
+				.catch(reject);
+		});
+	});
 }
 
-function _deleteSubscriptionFromUser(email, filterId) {
-
+function _deleteSubscriptionFilter(email, subscribersRef) {
+	return new Promise(function(resolve, reject) {
+		let keyToDelete;
+		subscribersRef.once("value", function (snapshot) {
+			let subscribers = snapshot.val();
+			if(!subscribers) {
+				resolve();
+				return;
+			}
+			Object.keys(subscribers).map(key => {
+				if (subscribers[key].email == email) {
+					keyToDelete = key;
+				}
+			});
+			if(!keyToDelete) {
+				resolve();
+				return;
+			}
+			subscribersRef.child(keyToDelete).remove()
+				.then(resolve)
+				.catch(reject);
+		});
+	});
 }
 
 function unsubscribe(data) {
-	let userEmail = sanitizeEmail(data.email);
+	let sanitizedEmail = sanitizeEmail(data.email);
 	let filterId = data.filterId;
-	subscriptionsRef.child(`${filterId}/subscribers`);
+	let subscribersRef = subscriptionsRef.child(`${filterId}/subscribers`);
+	let userSubscriptionsRef = usersRef.child(`${sanitizedEmail}/subscriptions`);
+	return _deleteSubscriptionFilter(data.email, subscribersRef)
+		.then(_deleteUserFilter.bind(null, filterId, userSubscriptionsRef));
 }
 
 module.exports = {
