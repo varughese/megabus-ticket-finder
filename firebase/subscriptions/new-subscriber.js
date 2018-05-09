@@ -1,8 +1,9 @@
-let firebase = require("../firebase");
-let validateFilterId = require("../../lib/helpers/get-filterId");
+let firebase = require('../firebase');
+let validateFilterId = require('../../lib/helpers/get-filterId');
+let addSubscriptionToUser = require('../users/user-functions').addSubscription;
 let db = firebase.database();
 
-let subscriptionsRef = db.ref("subscriptions");
+let subscriptionsRef = db.ref('subscriptions');
 
 /*
 {
@@ -17,5 +18,8 @@ module.exports = function(data) {
 	return subscriptionsRef.child(`${filterId}/subscribers`).push({
 		email: data.email,
 		price: data.price
-	});
+	}).then(addSubscriptionToUser.bind(null, {
+		email: data.email,
+		filterId: filterId
+	}));
 };
