@@ -2,6 +2,7 @@ let firebase = require('../firebase');
 let db = firebase.database();
 
 let usersRef = db.ref('users');
+let subscriptionsRef = db.ref('subscriptions');
 
 function sanitizeEmail(email) {
 	return email
@@ -24,7 +25,22 @@ function addSubscription(data) {
 	return usersRef.child(`${userEmail}/subscriptions`).push(filterId);
 }
 
+function _deleteFilterFromUser(email, filterId) {
+
+}
+
+function _deleteSubscriptionFromUser(email, filterId) {
+
+}
+
+function unsubscribe(data) {
+	let userEmail = sanitizeEmail(data.email);
+	let filterId = data.filterId;
+	subscriptionsRef.child(`${filterId}/subscribers`);
+}
+
 module.exports = {
 	newUser: newUser,
-	addSubscription: addSubscription
+	addSubscription: addSubscription,
+	unsubscribe: unsubscribe
 };
