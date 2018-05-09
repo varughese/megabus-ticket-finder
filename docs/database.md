@@ -134,4 +134,4 @@ Example "User Story": I want to be emailed if there is a ticket on 2/2/18 below 
 ## Design Decisions
 Wrapping Megabus's API and making calls to it and listing when there are $1 tickets. That stuff is easy. What is hard is thinking about the design of this kind of thing.
 
-I knew from the inception of this project that I was going to make some sort of email/price alert system. I like perfection, so I spent a good amount of time thinking about the most efficient and most elegant way to design the database. Eventually, I decided to just go ahead and try something out.
+I knew from the inception of this project that I was going to make some sort of email/price alert system. I like perfection, so I spent a good amount of time thinking about the most efficient and most elegant way to design the database. Eventually, I decided to try what I thought was the cleanest method out.
