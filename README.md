@@ -5,14 +5,14 @@
 ## What is this?
 Megabus is a bus line that offers really cheap tickets. Finding these "cheap" tickets however is really cumbersome and tedious on their website.
 
-This project aims to solve this problem by wrapping [megabus](megabus.com)'s internal API.
+This project aims to solve this problem by wrapping [megabus](http://us.megabus.com)'s internal API.
 
 It is still under development, so stay tuned!
 
 #### Here is a web app I really quickly hacked together: [https://megabustickerfinder.herokuapp.com/](https://megabustickerfinder.herokuapp.com/) (its not even close to done and is still in development so might not work)
 
 ## How to Use
-If you would like to use this with Node, you can! The backend "ticket finding" library is not separated from the frontend, but that can be done if a request is made.
+If you would like to use this with Node, you can! 
 
 Download this project. The `lib` folder has what you need.
 
@@ -47,7 +47,7 @@ Heres what this will produce ![Terminal Window](https://i.imgur.com/AfG6y6D.png)
 
 ### Features
 - Search Megabus tickets to save money
-- Set up price alerts
+- Set up email alerts triggered by price
 - Track price history of tickets
 
 There is some documentation on the design of the database and some logic behind some of the complicated mechanisms of the project [here](https://github.com/varughese/megabus-ticket-finder/blob/master/docs/database.md).
