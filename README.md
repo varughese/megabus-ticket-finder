@@ -9,7 +9,9 @@ This project aims to solve this problem by wrapping [megabus](http://us.megabus.
 
 It is still under development, so stay tuned!
 
-#### Here is a web app I really quickly hacked together: [https://megabustickerfinder.herokuapp.com/](https://megabustickerfinder.herokuapp.com/) (its not even close to done and is still in development so might not work)
+## Note:
+Took down the deployed web app to avoid getting in trouble with Megabus. The project is cool so I keep it up 
+#### Here is a web app I really quickly hacked together: [https://megabustickerfinder.herokuapp.com/](https://megabustickerfinder.herokuapp.com/) (took down)
 
 ## How to Use
 If you would like to use this with Node, you can! 
