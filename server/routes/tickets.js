@@ -22,7 +22,7 @@ module.exports = function(apiRouter) {
 				days: req.query.days && req.query.days.split("").map(Number)
 			};
 			let routes = [new Route(finderOptions.originId, finderOptions.destinationId)];
-			if(req.query.bothWays) routes.push(new Route(finderOptions.destinationId, finderOptions.originId));
+			if(req.query.bothWays == 'true') routes.push(new Route(finderOptions.destinationId, finderOptions.originId));
 
 			let finder = new TicketFinder(finderOptions, routes);
 

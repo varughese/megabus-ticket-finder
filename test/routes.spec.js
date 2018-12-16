@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const Route = require("../lib").Route;
 const moment = require("moment");
 

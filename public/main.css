@@ -1,0 +1,39 @@
+.ticket.item {
+    width: 240px;
+    border: 1px solid #ffc107;
+    display: inline-block!important;
+    padding: 10px;
+    /* border-right: 5px solid #ddd; */
+    margin: 10px 15px 10px 0;
+}
+
+.travel-line.travel-line-date {
+    margin-top: -10px;
+    background: #FFC107;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 3px 10px;
+    margin-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-dest .travel-line-date {
+	background: #2196F3;
+	color: white;
+}
+.ticket-dest.ticket.item {
+	border-color: #2196F3;
+}
+
+.email-alert {
+	margin-top: 50px;
+	padding-top: 30px;
+	border-top: 1px dashed #ddd;
+}
+
+.disclaimer {
+	text-align: center;
+    font-size: 10px;
+    margin-bottom: 14px;
+}

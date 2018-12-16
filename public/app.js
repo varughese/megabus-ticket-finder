@@ -12,7 +12,8 @@ class TicketFinderContainer extends React.Component {
 	}
 
 	getTickets(options) {
-		this.setState({ loading: true });
+		this.setState({ loading: true, originId: options.originId });
+
 		client.getTickets(options)
 			.then(this.updateTickets)
 		;
@@ -20,11 +21,8 @@ class TicketFinderContainer extends React.Component {
 
 	updateTickets(data) {
 		let tickets = data.tickets ? data.tickets : data;
-		tickets.map((ticket) => {
-			ticket.date = ticket.date.slice(0,10);
-			ticket.departureTime = ticket.departureTime.slice(11,16);
-			ticket.arrivalTime = ticket.arrivalTime.slice(11,16);
-			return ticket;
+		tickets.forEach(ticket => {
+			ticket.from = ticket.origin.cityId == this.state.originId;
 		});
 		this.setState({
 			loading: false,
@@ -37,6 +35,7 @@ class TicketFinderContainer extends React.Component {
 			<div>
 				<SearchOptions getTickets={this.getTickets}/>
 				<TicketList tickets={this.state.tickets} loading={this.state.loading} />
+				<EmailAlertOptions />
 			</div>
 		);
 	}
@@ -45,13 +44,15 @@ class TicketFinderContainer extends React.Component {
 class SearchOptions extends React.Component {
 	constructor(props) {
 		super(props);
+		var today = new Date();
 		this.state = {
 			originId: "127",
 			destinationId: "128",
 			latestAvailable: true,
-			start: new Date().toISOString().slice(0,10),
-			end: false,
+			start: today.toISOString().slice(0,10),
+			end: new Date(today.setFullYear(today.getFullYear() + 1)).toISOString().slice(0,10),
 			days: [true,false,false,false,false,false,false],
+			bothWays: false,
 			"maxPrice": 40
 		};
 
@@ -79,13 +80,21 @@ class SearchOptions extends React.Component {
 		const name = target.name;
 
 		if(isCheckbox) {
-			const index = Number(target.attributes["data-day-index"].value);
-			const days = this.state.days.map((day, i) => {
-				return i === index ? !day : day;
-			});
-			this.setState({
-				days: days
-			});
+			var dayIndex = target.attributes["data-day-index"];
+			if(dayIndex) {
+				const index = Number(dayIndex.value);
+				const days = this.state.days.map((day, i) => {
+					return i === index ? !day : day;
+				});
+				this.setState({
+					days: days
+				});
+			} else {
+				this.setState({
+					[name]: value
+				});
+			}
+			
 		} else {
 			this.setState({
 				[name]: value
@@ -94,25 +103,21 @@ class SearchOptions extends React.Component {
 	}
 
 	render() {
+		
 		return (
 			<form className="ui form" onSubmit={this.getTickets}>
 				<div className="field">
-					<div className="five fields">
+					<div className="four fields">
 						<div className="four wide field">
 							<label>Origin</label>
 							<select name="originId" className="ui dropdown fluid" defaultValue={this.state.originId} id="departing" onChange={this.handleInputChange}>
-								<option value="128">Pittsburgh</option>
-								<option value="127">Philadelphia</option>
-								<option value="137">PSU</option>
-								<option value="123">New York</option>
+								{window.cities.map(city => <option key={city.id} value={city.id}>{city.name}</option> )}
 							</select>
 						</div>
 						<div className="four wide field">
 							<label>Destination </label>
 							<select className="ui dropdown fluid" name="destinationId" id="returning" defaultValue={this.state.destinationId} onChange={this.handleInputChange}>
-								<option value="128">Pittsburgh</option>
-								<option value="127">Philadelphia</option>
-								<option value="137">PSU</option>
+								{window.cities.map(city => <option key={city.id} value={city.id}>{city.name}</option> )}
 							</select>
 						</div>
 						<div className="two wide field">
@@ -159,6 +164,22 @@ class SearchOptions extends React.Component {
 						</div>
 					</div>
 				</div>
+				<div>
+					<b>Optional:</b>
+				</div>
+				<div className="two fields">
+					<div className="four wide field">
+						<label>End Date</label>
+						<input type="date" name="end" value={this.state.end} onChange={this.handleInputChange}></input>
+					</div>
+					<div className="two wide field">
+						<div className="ui checkbox one wide field">
+							<input checked={this.state.bothWays} name="bothWays" onChange={this.handleInputChange} type="checkbox" />
+							<label>Roundtrip?</label>
+						</div>
+					</div>
+					
+				</div>
 				<div className="form-group">
 					<button className="ui primary button" onClick={this.getTickets}>Search</button>
 				</div>
@@ -166,7 +187,6 @@ class SearchOptions extends React.Component {
 		);
 	}
 }
-
 
 class TicketList extends React.Component {
 	render() {
@@ -178,7 +198,7 @@ class TicketList extends React.Component {
 			return <div>Loading</div>;
 
 		if(tickets.length)
-			return <div className="ui relaxed large divided list">{tickets}</div>;
+			return <div className="ticket-list">{tickets}</div>;
 		else
 			return <div>Search Above!</div>;
 	}
@@ -186,15 +206,38 @@ class TicketList extends React.Component {
 
 class Ticket extends React.Component {
 	render() {
+		function formatTime(time) {
+			var d = new Date(time);
+			var hr = d.getHours();
+			var min = d.getMinutes();
+			if (min < 10) {
+				min = "0" + min;
+			}
+			var ampm = "AM";
+			if( hr > 12 ) {
+				hr -= 12;
+				ampm = "PM";
+			}
+			if(hr == 0) hr = 12
+			return hr + ":" + min + ampm;
+		}
+
+		function formatDate(date) {
+			var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+			var d = new Date(date);
+			return days[d.getDay()] + " " + (d.getMonth()+1) + "/" + d.getDate();
+		}
+
 		return (
-			<div className="ticket item">
+			<div className={"ticket item " + (this.props.from ? "ticket-origin" : "ticket-dest")}>
 				<div className="content">
-					<div className="ticket-section header">
+					<div className="ticket-section header ">
 						<div className="travel-line travel-line-date">
-							{this.props.date} --- <i>${this.props.price}</i>
+							<span className="ticket-date">{formatDate(this.props.date)}</span>
+							<span className="ticket-price">${this.props.price}</span>
 						</div>
 						<div className="travel-line travel-line-time">
-							{this.props.departureTime} - {this.props.arrivalTime}
+							{formatTime(this.props.departureTime)} - {formatTime(this.props.arrivalTime)}
 						</div>
 					</div>
 					<div className="ticket-section">
@@ -205,6 +248,79 @@ class Ticket extends React.Component {
 				</div>
 			</div>
 		);
+	}
+}
+
+class EmailAlertOptions extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			originId: "127",
+			destinationId: "128",
+			email: "",
+			start: new Date().toISOString().slice(0,10),
+			"maxPrice": 20
+		};
+
+		this.handleInputChange = this.handleInputChange.bind(this);
+		this.addSubscriber = this.addSubscriber.bind(this);
+	}
+
+	handleInputChange(event) {
+		const target = event.target;
+		const value = target.value;
+		const name = target.name;
+		this.setState({
+			[name]: value
+		});
+		this.addSubscriber = this.addSubscriber.bind(this)
+	}
+
+	addSubscriber() {
+		client.newSubscriber(Object.assign({}, this.state));
+	}
+
+	render() {
+		return (
+			<div className="email-alert">
+			<div>Would you like to be emailed when a price is low on a certain day? Enter information here:</div>
+			<form className="ui form" onSubmit={this.addSubscriber}>
+				<div className="field">
+					<div className="four fields">
+						<div className="four wide field">
+							<label>Origin</label>
+							<select name="originId" className="ui dropdown fluid" defaultValue={this.state.originId} id="departing" onChange={this.handleInputChange}>
+								{window.cities.map(city => <option key={city.id} value={city.id}>{city.name}</option> )}
+							</select>
+						</div>
+						<div className="four wide field">
+							<label>Destination </label>
+							<select className="ui dropdown fluid" name="destinationId" id="returning" defaultValue={this.state.destinationId} onChange={this.handleInputChange}>
+								{window.cities.map(city => <option key={city.id} value={city.id}>{city.name}</option> )}
+							</select>
+						</div>
+						<div className="two wide field">
+							<label>Price</label>
+							<input placeholder="Max Price" type="number" name="maxPrice" value={this.state.maxPrice} onChange={this.handleInputChange}></input>
+						</div>
+						<div className="four wide field">
+							<label>Date</label>
+							<input type="date" name="start" value={this.state.start} onChange={this.handleInputChange}></input>
+						</div>
+					</div>
+				</div>
+				<div className="field one field">
+					<div className="eight wide field">
+						<label>Email</label>
+						<input placeholder="email" type="email" name="email" value={this.state.email} onChange={this.handleInputChange}></input>
+					</div>
+					<div className="form-group">
+					<button className="ui primary button" onClick={this.addSubscriber}>Subscribe</button>
+					</div>
+				</div>
+			</form>
+			</div>
+		)
 	}
 }
 

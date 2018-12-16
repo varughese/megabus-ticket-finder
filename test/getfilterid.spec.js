@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 let getFilterId = require("../lib/helpers/get-filterid");
 let assert = require("chai").assert;
 

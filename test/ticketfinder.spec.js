@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const TicketFinder = require("../lib").TicketFinder;
 const Route = require("../lib").Route;
 const moment = require("moment");
