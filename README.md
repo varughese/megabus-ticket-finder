@@ -10,7 +10,7 @@ This project aims to solve this problem by wrapping [megabus](http://us.megabus.
 This is for educational purposes.
 
 ## Web App
-#### Here is a web app I really quickly hacked together with React: [https://megabustickerfinder.herokuapp.com/](https://megabustickerfinder.herokuapp.com/)
+#### Here is a web app I really quickly hacked together with React: [https://megabusticketfinder.herokuapp.com/](https://megabusticketfinder.herokuapp.com/)
 
 ## How to Use
 If you would like to use this with Node, you can! 
