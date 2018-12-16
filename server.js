@@ -2,7 +2,8 @@ let express = require('express'),
 	app = express(),
 	bodyParser = require('body-parser'),
 	morgan = require('morgan'),
-	path = require('path');
+	server = require('http').Server(app),
+	io = require('socket.io')(server);
 
 let config = require('./lib/config');
 
@@ -19,8 +20,8 @@ app.use(function(req, res, next) {
 
 app.use(morgan('dev'));
 
-let apiRoutes = require('./server/routes/api')(app, express);
+let apiRoutes = require('./server/routes/api')(app, express, io);
 app.use('/api', apiRoutes);
 
-app.listen(config.PORT);
+server.listen(config.PORT);
 console.log('Magic happening on port', config.PORT);

@@ -9,11 +9,21 @@ class TicketFinderContainer extends React.Component {
 
 		this.getTickets = this.getTickets.bind(this);
 		this.updateTickets = this.updateTickets.bind(this);
+		
+		let THIS = this;
+		if(socket) {
+			socket.on('new_ticket', function (ticket) {
+				ticket.from = ticket.origin.cityId == THIS.state.originId;
+				THIS.setState({
+					loading: true,
+					tickets: THIS.state.tickets.concat([ticket])
+				});
+			});
+		}
 	}
 
 	getTickets(options) {
-		this.setState({ loading: true, originId: options.originId });
-
+		this.setState({ loading: true, originId: options.originId, tickets: [] });
 		client.getTickets(options)
 			.then(this.updateTickets)
 		;
@@ -21,12 +31,9 @@ class TicketFinderContainer extends React.Component {
 
 	updateTickets(data) {
 		let tickets = data.tickets ? data.tickets : data;
-		tickets.forEach(ticket => {
-			ticket.from = ticket.origin.cityId == this.state.originId;
-		});
+		console.log(tickets);
 		this.setState({
-			loading: false,
-			tickets: tickets
+			loading: false
 		});
 	}
 
@@ -190,15 +197,22 @@ class SearchOptions extends React.Component {
 
 class TicketList extends React.Component {
 	render() {
-		const tickets = this.props.tickets.map((ticket) => {
-			return <Ticket {...ticket} key={ticket.journeyId}/>;
+		const tickets = this.props.tickets.sort((a,b) => {
+			return new Date(a.date) - new Date(b.date);
+		}).map((ticket) => {
+			return <Ticket {...ticket} key={ticket.journeyId + ticket.departureTime}/>;
 		});
 
+		var res = [];
+
 		if(this.props.loading)
-			return <div>Loading</div>;
+			res.push(<div>Loading</div>);
 
 		if(tickets.length)
-			return <div className="ticket-list">{tickets}</div>;
+			res.push(<div className="ticket-list">{tickets}</div>)
+		
+		if(res.length)
+			return <div>{res[0]}{res[1]}</div>;
 		else
 			return <div>Search Above!</div>;
 	}

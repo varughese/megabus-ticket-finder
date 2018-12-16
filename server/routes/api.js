@@ -1,7 +1,7 @@
-module.exports = function(app, express) {
+module.exports = function(app, express, io) {
 	let apiRouter = express.Router();
 
-	require('./tickets')(apiRouter);
+	require('./tickets')(apiRouter, io);
 	require('./subscriptions')(apiRouter);
 	require('./users')(apiRouter);
 

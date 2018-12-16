@@ -25,6 +25,10 @@
       <div class="disclaimer">*This front end was quickly hacked together for demonstration purposes*</div>
       <div id="content" class="ui container"></div>
     </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect(location.href);
+    </script>
     <script type="text/babel" src="./client.js"></script>
     <!-- <script type="text/babel" src="./helpers.js"></script> -->
     <script type="text/babel" src="./app.js"></script>

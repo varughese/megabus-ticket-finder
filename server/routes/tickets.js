@@ -10,7 +10,8 @@ function normalizeDate(date) {
 	return date ? new Date(date) : undefined;
 }
 
-module.exports = function(apiRouter) {
+
+module.exports = function(apiRouter, io) {
 	apiRouter.get('/tickets', function(req, res) {
 		try {
 			let finderOptions = {
@@ -21,10 +22,17 @@ module.exports = function(apiRouter) {
 				end: normalizeDate(req.query.end),
 				days: req.query.days && req.query.days.split("").map(Number)
 			};
+
+	
 			let routes = [new Route(finderOptions.originId, finderOptions.destinationId)];
 			if(req.query.bothWays == 'true') routes.push(new Route(finderOptions.destinationId, finderOptions.originId));
 
 			let finder = new TicketFinder(finderOptions, routes);
+
+			if(req.query.socket_id) {
+				let socket = io.to(req.query.socket_id);
+				finder.setSocket(socket);
+			}
 
 			let minPrice = Number(req.query.minPrice) || 0;
 			let maxPrice = Number(req.query.maxPrice) || 200;

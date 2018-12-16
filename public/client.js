@@ -2,6 +2,7 @@ window.client = (function() {
 	function getTickets(opts) {
 		let qs = `?originId=${opts.originId}&destinationId=${opts.destinationId}&start=${opts.start}&days=${opts.days}&maxPrice=${opts.maxPrice}&bothWays=${opts.bothWays}`;
 		if(opts.end) qs += `&end=${opts.end}`;
+		if(window.socket && window.socket.id) qs += `&socket_id=${window.socket.id}`;
 		const url = `/api/tickets${qs}`;
 		return fetch(url, {
 			headers: {
