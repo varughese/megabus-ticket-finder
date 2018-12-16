@@ -23,6 +23,7 @@
     "mocha": "^4.1.0"
   },
   "scripts": {
+    "start": "node server.js",
     "test": "./node_modules/mocha/bin/mocha test",
     "inspect": "nodemon --inspect --inspect-brk index.js"
   },
