@@ -7,9 +7,9 @@ Megabus is a bus line that offers really cheap tickets. Finding these "cheap" ti
 
 This project aims to solve this problem by wrapping [megabus](http://us.megabus.com)'s internal API.
 
-It is still under development, so stay tuned! This is for educational purposes.
+This is for educational purposes.
 
-## Note:
+## Web App
 T#### Here is a web app I really quickly hacked together with React: [https://megabustickerfinder.herokuapp.com/](https://megabustickerfinder.herokuapp.com/)
 
 ## How to Use
