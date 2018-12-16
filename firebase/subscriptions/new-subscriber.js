@@ -1,5 +1,5 @@
 let firebase = require('../firebase');
-let validateFilterId = require('../../lib/helpers/get-filterId');
+let validateFilterId = require('../../lib/helpers/get-filterid');
 let addSubscriptionToUser = require('../users/user-functions').addSubscription;
 let db = firebase.database();
 
