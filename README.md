@@ -10,7 +10,8 @@ This project aims to solve this problem by wrapping [megabus](http://us.megabus.
 This is for educational purposes.
 
 ## Web App
-#### Here is a web app I really quickly hacked together with React: [https://megabusticketfinder.herokuapp.com/](https://megabusticketfinder.herokuapp.com/)
+#### Here is a web app I really quickly hacked together with React: [https://megabus-ticket-finder.herokuapp.com/](https://megabus-ticket-finder.herokuapp.com/)
+Just for fun, it uses `socket.io` so the frontend gets updated real time when the backend finds each new ticket. It is pretty buggy, but I put it in there to demonstrate how easy it would be to add a feature like that.
 
 ## How to Use
 If you would like to use this with Node, you can! 
@@ -51,7 +52,7 @@ Heres what this will produce ![Terminal Window](https://i.imgur.com/AfG6y6D.png)
 - Set up email alerts triggered by price
 - Track price history of tickets
 
-The email alerting system actually does work. I turned it off on the server, but if you clone the repository you can see how it would work internally.
+The email alerting system actually does work. I turned it off on the Heroku server, but if you clone the repository you can see how it would work.
 
 There is some documentation on the design of the database and some logic behind some of the complicated mechanisms of the project [here](https://github.com/varughese/megabus-ticket-finder/blob/master/docs/database.md).
 
