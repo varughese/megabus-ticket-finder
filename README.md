@@ -16,7 +16,7 @@ Just for fun, it uses `socket.io` so the frontend gets updated real time when th
 ## How to Use
 If you would like to use this with Node, you can! 
 
-Download this project. The `lib` folder has what you need.
+Download this project. The `lib` folder has what you need. I have all my tickets cache into a `Firebase` database. You can either ignore this or connect to your own database. (Look at `firebase/secretkey.js`, `dotenv`, and `config.js`)
 
 ```js
 const TicketFinder = require("./lib").TicketFinder;

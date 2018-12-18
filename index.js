@@ -11,7 +11,7 @@ var finder = new TicketFinder({
 	// start: "2017-11-17",
 
 	// weekends: true,
-	days: [5, 6, 7],
+	days: [1],
 	// days: [0]
 }, [
 	// new Route("Philly", "Pittsburgh"),

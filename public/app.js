@@ -40,7 +40,7 @@ class TicketFinderContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				<SearchOptions getTickets={this.getTickets}/>
+				<SearchOptions getTickets={this.getTickets} loading={this.state.loading}/>
 				<TicketList tickets={this.state.tickets} loading={this.state.loading} />
 				<EmailAlertOptions />
 			</div>
@@ -142,31 +142,31 @@ class SearchOptions extends React.Component {
 					<div className="six fields">
 						{/* <input name="days" value={this.state.days} onChange={this.handleInputChange}></input> */}
 						<div className="ui checkbox one wide field">
-							<input checked={this.state.days[0]} name="days" data-day-index="0" onChange={this.handleInputChange} type="checkbox" />
+							<input checked={this.state.days[1]} name="days" data-day-index="1" onChange={this.handleInputChange} type="checkbox" />
 							<label>M</label>
 						</div>
 						<div className="ui checkbox one wide field">
-							<input checked={this.state.days[1]} name="days" data-day-index="1" onChange={this.handleInputChange} type="checkbox" />
+							<input checked={this.state.days[2]} name="days" data-day-index="2" onChange={this.handleInputChange} type="checkbox" />
 							<label>T</label>
 						</div>
 						<div className="ui checkbox one wide field">
-							<input checked={this.state.days[2]} name="days" data-day-index="2" onChange={this.handleInputChange} type="checkbox" />
+							<input checked={this.state.days[3]} name="days" data-day-index="3" onChange={this.handleInputChange} type="checkbox" />
 							<label>W</label>
 						</div>
 						<div className="ui checkbox one wide field">
-							<input checked={this.state.days[3]} name="days" data-day-index="3" onChange={this.handleInputChange} type="checkbox" />
+							<input checked={this.state.days[4]} name="days" data-day-index="4" onChange={this.handleInputChange} type="checkbox" />
 							<label>Th</label>
 						</div>
 						<div className="ui checkbox one wide field">
-							<input checked={this.state.days[4]} name="days" data-day-index="4" onChange={this.handleInputChange} type="checkbox" />
+							<input checked={this.state.days[5]} name="days" data-day-index="5" onChange={this.handleInputChange} type="checkbox" />
 							<label>F</label>
 						</div>
 						<div className="ui checkbox one wide field">
-							<input checked={this.state.days[5]} name="days" data-day-index="5" onChange={this.handleInputChange} type="checkbox" />
+							<input checked={this.state.days[6]} name="days" data-day-index="6" onChange={this.handleInputChange} type="checkbox" />
 							<label>S</label>
 						</div>
 						<div className="ui checkbox one wide field">
-							<input checked={this.state.days[6]} name="days" data-day-index="6" onChange={this.handleInputChange} type="checkbox" />
+							<input checked={this.state.days[0]} name="days" data-day-index="0" onChange={this.handleInputChange} type="checkbox" />
 							<label>Su</label>
 						</div>
 					</div>
@@ -188,7 +188,7 @@ class SearchOptions extends React.Component {
 					
 				</div>
 				<div className="form-group">
-					<button className="ui primary button" onClick={this.getTickets}>Search</button>
+					<button className="ui primary button" onClick={this.getTickets} disabled={this.props.loading}>Search</button>
 				</div>
 			</form>
 		);
