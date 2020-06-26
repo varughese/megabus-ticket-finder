@@ -9,6 +9,8 @@ This project aims to solve this problem by wrapping [megabus](http://us.megabus.
 
 This is for educational purposes.
 
+> Update: I made this when I was a broke college freshmen. It might not work now.
+
 ## Web App
 #### Here is a web app I really quickly hacked together with React: [https://megabus-ticket-finder.herokuapp.com/](https://megabus-ticket-finder.herokuapp.com/)
 Just for fun, it uses `socket.io` so the frontend gets updated real time when the backend finds each new ticket. It is pretty buggy, but I put it in there to demonstrate how easy it would be to add a feature like that.
