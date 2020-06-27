@@ -9,7 +9,7 @@ This project aims to solve this problem by wrapping [megabus](http://us.megabus.
 
 This is for educational purposes.
 
-> Update: I made this when I was a broke college freshmen. It might not work now.
+> 2020 Update: I made this in 2017 when I was a broke college freshmen, so it might not work now.
 
 ## Web App
 #### Here is a web app I really quickly hacked together with React: [https://megabus-ticket-finder.herokuapp.com/](https://megabus-ticket-finder.herokuapp.com/)
