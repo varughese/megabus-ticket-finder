@@ -11,7 +11,7 @@
     "firebase-admin": "^6.4.0",
     "handlebars": "^4.0.11",
     "moment": "^2.22.1",
-    "mongodb": "^2.2.35",
+    "mongodb": "^3.6.1",
     "mongoose": "^4.13.12",
     "morgan": "^1.9.1",
     "nodemailer": "^4.6.4",
